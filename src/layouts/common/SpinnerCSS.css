@@ -1,0 +1,33 @@
+  .loading{
+    align-self: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border-top: 10px solid #e74c3c;
+    position: relative;/* havaset bashe akhar bezar*/
+    animation: a1 2s linear infinite;/* havaset bashe akhar bezar*/
+    left: -40%;
+  }
+  
+  .loading span{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    line-height: 130px;
+    animation: a2 2s linear infinite;/* havaset bashe akhar bezar*/
+  }
+  @keyframes a1 {
+    to{
+      transform: rotate(360deg);
+    }
+  
+  }
+  @keyframes a2 {
+    to{
+      transform: rotate(-360deg);
+    }
+  
+  }
