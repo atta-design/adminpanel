@@ -33,15 +33,16 @@ function Login() {
     };
 
     dispatch(fetchUsers("/Account/Login", postOjb));
-    console.log(reduxdata.request);
+    
   }
   useEffect(() => {
     if (reduxdata.request !== null) {
-      if (reduxdata.status === 1) {
+      if (reduxdata.request.status === 1) {
         setLoadPanelVisible(false);
       } else {
         setLoadPanelVisible(false);
-        // showMessage(true, getStatusMessage(reduxdata.status), "error");
+        showMessage(true, getStatusMessage(reduxdata.request.status), "error");
+        console.log(reduxdata.request.status);
       }
     }
   }, [reduxdata]);

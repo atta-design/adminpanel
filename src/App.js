@@ -22,39 +22,32 @@ function App() {
     if (isLoading === "pending") {
       setIsLoading(true);
     }
+
   }, [reduxdata]);
 
   return (
     <>
-      <ToastProvider>
-        {isAuth ? (
-          <BrowserRouter>
-            <div className={"App page d-flex flex-row flex-column-fluid"}>
-              <Sidebar />
-              <div className="wrapper d-flex flex-column flex-row-fluid">
-                <Topbar />
-                <div
-                  className="content d-flex flex-column flex-column-fluid"
-                  id="kt_content"
-                >
-                  <SwitchMenu />
-                </div>
-                <div
-                  className={
-                    isLoading === true
-                      ? "loading-app"
-                      : "loading-app loading-app-finish"
-                  }
-                >
-                  <Loading></Loading>
-                </div>
-              </div>
-            </div>
-          </BrowserRouter>
-        ) : (
-          <Login />
-        )}
-      </ToastProvider>
+      <ToastProvider>  
+                <BrowserRouter>
+                    <div className={isAuth ? "App page d-flex flex-row flex-column-fluid" : "App page d-flex flex-row flex-column-fluid none"}>
+                        <Sidebar />
+                        <div className="wrapper d-flex flex-column flex-row-fluid">
+                            <Topbar />
+                            <div className="content d-flex flex-column flex-column-fluid" id="kt_content">
+                                <SwitchMenu />
+                            </div>
+                        </div>
+                    </div>
+                    <div className={isLoading === true ? "loading-app" : "loading-app loading-app-finish"}>
+                        <Loading></Loading>
+                    </div>
+                    {
+                    isAuth === false
+                        && 
+                        <Login />
+                    }
+                </BrowserRouter>
+            </ToastProvider>
     </>
   );
 }
