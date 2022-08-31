@@ -21,7 +21,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loadPanelVisible, setLoadPanelVisible] = useState(false);
 
-  console.log(reduxdata);
 
   async function handleSubmit(e) {
     setLoadPanelVisible(true);

@@ -18,7 +18,7 @@ const entities = [
     {
         no: 3,
         title: 'خبر',
-        entity: 4,
+        entity: 8,
         action: 'newsList',
         icon: 'fa fa-clock-o',
         sort:2
@@ -34,7 +34,7 @@ const entities = [
     {
         no: 5,
         title: 'مقاله',
-        entity: 3,
+        entity: 5,
         action: 'roleList',
         icon: 'fa fa-clock-o',
         sort:2

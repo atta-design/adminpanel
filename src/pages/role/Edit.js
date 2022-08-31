@@ -3,8 +3,7 @@ import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { GetDataApi, PostApi } from '../../managers/HttpManager';
-import { fetchdata } from '../../redux/reducers/getdataReducer';
-import { useDispatch, useSelector } from "react-redux";
+
 // components
 import Chips from '../../components/chips/Chips';
 import TextBoxComponent from '../../components/textBox/TextBox';
@@ -23,7 +22,7 @@ import { CheckBoxConfig as canAddConfig } from './editConfigs/canAddCheckBoxConf
 import { CheckBoxConfig as canEditConfig } from './editConfigs/canEditCheckBoxConfig';
 import { CheckBoxConfig as IsShownConfig } from './editConfigs/isShownCheckBoxConfig';
 import { ButtonConfig as SubmitButtonConfig } from './editConfigs/submitButtonConfig';
-import { SelectBoxConfig as EntityConfig } from './editConfigs/entitySelectBoxConfig';
+import { SelectBoxConfig  } from './editConfigs/entitySelectBoxConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from './editConfigs/titleTextBoxConfig';
 import { CheckBoxConfig as canDeleteConfig } from './editConfigs/canDeleteCheckBoxConfig';
 import { CheckBoxConfig as canPublishConfig } from './editConfigs/canPublishCheckBoxConfig';
@@ -54,7 +53,7 @@ export default function Edit() {
 
                 setLoadPanelVisible(true);
                 const data = await GetDataApi('/role/item?uid=' + uid);
-console.log(data)
+console.log(data.content.entity)
                 if (data.status === 1) {
                     setAdd(data.content.add);
                     setEdit(data.content.edit);
@@ -104,7 +103,7 @@ console.log(data)
             };
 
             const data = await PostApi('/role/edit', postOjb);
-
+console.log(data)
             if (data.status === 1) {
                 setLoadPanelVisible(false)
                 showMessage(true, getStatusMessage(data.status), 'success');
@@ -148,9 +147,9 @@ console.log(data)
                                             {
                                                 entity != null &&
                                                 <SelectBox
-                                                    config={EntityConfig}
+                                                    config={SelectBoxConfig}
                                                     defaultValue={entity}
-                                                    onValueChanged={(data) => setEntity(data.value)}
+                                                    onValueChanged={(data) => console.log(data.value)}
                                                 ></SelectBox>
                                             }
                                         </div>

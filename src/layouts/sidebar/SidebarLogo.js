@@ -1,6 +1,6 @@
 function SidebarLogo(){
     return (
-<div className="aside-logo flex-column-auto" id="kt_aside_logo">
+<div className=" aside-logo flex-column-auto" id="kt_aside_logo">
     <a href="index.html">
         <img alt="Logo" src="../assets/media/logos/logo-1.svg" className="h-15px logo" />
     </a>

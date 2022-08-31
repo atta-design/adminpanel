@@ -306,7 +306,7 @@ export const GridConfig = {
             showInColumnChooser: false, // can to show to column chooser
             // cssClass: 'custom', // can pass css to column
             lookup:{
-                dataSource: entities,
+                // dataSource: entities,
                 valueExpr: "entity",
                 displayExpr: "title",
             },

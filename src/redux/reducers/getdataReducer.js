@@ -9,6 +9,7 @@ const getDataSlice = createSlice({
     loading: "idle",
     roleRequest: [],
     newsRequest: [],
+    MaindataRequest:[]
   },
 
   reducers: {
@@ -23,10 +24,13 @@ const getDataSlice = createSlice({
     newsReceived(state, action) {
       state.newsRequest = action.payload;
     },
+   MainReceived(state, action) {
+      state.MaindataRequest = action.payload;
+    },
   },
 });
 
-export const { usersLoading, rolesReceived, newsReceived } =
+export const { usersLoading, rolesReceived, newsReceived,MainReceived } =
   getDataSlice.actions;
 async function getCookie() {
   let retVal = Cookies.get("authtoken");
@@ -54,6 +58,11 @@ export const fetchNewsdata = (url) => async (dispatch) => {
   const response = await axios.get(baseURL + url, await getRequestOptions());
 
   dispatch(newsReceived(await response.data));
+};
+export const fetchMaindata = (url) => async (dispatch) => {
+  const response = await axios.get(baseURL + url, await getRequestOptions());
+
+  dispatch(MainReceived(await response.data));
 };
 
 export default getDataSlice.reducer;

@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+.news{
+color: rgba(240, 248, 255, 0.545)!important;
+margin-right:11px ;
+}
+.news:hover{
+  color: rgba(240, 248, 255, 0.989)!important;
+
+}
+.newscontainer{
+margin-right:-24px!important;
+margin-top: 10px;
+margin-bottom: 10px;
+}
