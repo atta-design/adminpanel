@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Sidebar from "../src/layouts/sidebar/Sidebar";
 import Topbar from "./layouts/topbar/Topbar";
-import SwitchMenu from "./layouts/sidebar/SwitchMenu";
 import Login from "../src/pages/login/Login";
 import { ToastProvider } from "./utils/toast/toastProvider";
 import { fetchMaindata } from "./redux/reducers/getDataReducer";
@@ -10,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 function App() {
 
 
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const reduxdata = useSelector((state) => state.requests);
   const dispach = useDispatch();
 
@@ -52,7 +51,7 @@ function App() {
                 className="content d-flex flex-column flex-column-fluid"
                 id="kt_content"
               >
-                <SwitchMenu />
+                {/* <SwitchMenu /> */}
               </div></div>
             </div>
           

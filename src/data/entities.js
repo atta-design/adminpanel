@@ -78,6 +78,13 @@ export const entities = [
         action: 'roleList',
         icon: 'fa fa-clock-o',
         sort:2
+    },{
+        no: 10,
+        title: 'InvoiceItem ',
+        entity: 10,
+        action: 'InvoiceItem ',
+        icon: 'fa fa-clock-o',
+        sort:2
     },
     {
         no: 11,
@@ -128,185 +135,144 @@ export const entities = [
         sort:2
     },
     {
-        no: 18,
-        title: 'Slider',
+        no: 17,
+        title: 'Slider  ',
         entity: 17,
-        action: 'newsList',
+        action: 'Slider  ',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 18,
+        title: 'FAQ ',
+        entity: 18,
+        action: 'FAQ ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 19,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Team ',
+        entity: 19,
+        action: 'Team ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 20,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Tag ',
+        entity: 20,
+        action: 'Tag ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 21,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Keyword ',
+        entity: 21,
+        action: 'Keyword ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 22,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 23,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 24,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 25,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 26,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 27,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 28,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },{
-        no: 29,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Transaction ',
+        entity: 22,
+        action: 'Transaction ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 30,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Recipe ',
+        entity: 30,
+        action: 'Recipe ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 31,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Equipment ',
+        entity: 31,
+        action: 'Equipment ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 32,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'RawMaterial ',
+        entity: 32,
+        action: 'RawMaterial ',
         icon: 'fa fa-clock-o',
         sort:2
     },
-    {
-        no: 33,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
-        icon: 'fa fa-clock-o',
-        sort:2
-    },
+    
     {
         no: 34,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Country ',
+        entity: 34,
+        action: 'Country ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 35,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Province ',
+        entity: 35,
+        action: 'Province ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 36,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Diet ',
+        entity: 36,
+        action: 'Diet ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 37,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Nutrient ',
+        entity: 37,
+        action: 'Nutrient ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 38,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'Disease ',
+        entity: 38,
+        action: 'Disease ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 39,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'FoodCategory ',
+        entity: 39,
+        action: 'FoodCategory ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
         no: 40,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        title: 'FoodMeal ',
+        entity: 40,
+        action: 'FoodMeal ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
-        no: 31,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        no: 41,
+        title: 'Iran ',
+        entity: 41,
+        action: 'Iran ',
         icon: 'fa fa-clock-o',
         sort:2
     },{
-        no: 31,
-        title: 'Slider',
-        entity: 17,
-        action: 'newsList',
+        no: 42,
+        title: 'Nations',
+        entity: 42,
+        action: 'Nations',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 43,
+        title: 'Plan',
+        entity: 43,
+        action: 'Plan',
         icon: 'fa fa-clock-o',
         sort:2
     },
