@@ -7,7 +7,7 @@ import { useToast } from "../../utils/toast/useToast";
 import getStatusMessage from "../../utils/statusHandler";
 import { TableListConfig } from "./configs/tableListConfig";
 import RoleEditModal from "../../components/modal/RoleEditModal";
-import { fetchRoledata } from "../../redux/reducers/getdataReducer";
+import { fetchRoledata } from "../../redux/reducers/getDataReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 export const DataContext = createContext({
@@ -30,8 +30,8 @@ export const DataContext = createContext({
 
 function Roles2() {
   const reduxdata = useSelector((state) => state.getData.roleRequest);
-
   const dispatch = useDispatch();
+
   const pageList = 6;
   const { showMessage } = useToast();
   const [uid, setUid] = useState("");
@@ -54,10 +54,12 @@ function Roles2() {
     setUid,
   };
 
+
+
   async function getLoadData(e) {
     dispatch(fetchRoledata(`/role/list?From=${0}&Count=${pageList}`));
     setIsLoading(false);
-
+    // putting received datas in states and show error messages If it exists
     try {
       if (reduxdata.length !== 0) {
         if (reduxdata.status === 1) {
@@ -72,6 +74,8 @@ function Roles2() {
       showMessage(true, "خطایی در واکشی داده رخ داده است", "error");
     }
   }
+
+// call getLoadData reducer for  getting role list data from api
 
   useEffect(() => {
     getLoadData();

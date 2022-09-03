@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import LogintSlice from "./reducers/loginReducer";
-import getDataSlice from './reducers/getdataReducer'
+import LogintSlice from "./reducers/postDataReducer";
+import getDataSlice from './reducers/getDataReducer'
 
 export const store = configureStore({
     reducer: {

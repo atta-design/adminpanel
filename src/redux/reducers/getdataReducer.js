@@ -4,20 +4,15 @@ import Cookies from "js-cookie";
 const baseURL = "//api-portal.saeedsafaee.ir";
 
 const getDataSlice = createSlice({
-  name: "request",
+  name: "getData",
   initialState: {
-    loading: "idle",
     roleRequest: [],
     newsRequest: [],
     MaindataRequest:[]
   },
 
   reducers: {
-    usersLoading(state) {
-      if (state.loading === "idle") {
-        state.loading = "pending";
-      }
-    },
+   
     rolesReceived(state, action) {
       state.roleRequest = action.payload;
     },
@@ -30,7 +25,7 @@ const getDataSlice = createSlice({
   },
 });
 
-export const { usersLoading, rolesReceived, newsReceived,MainReceived } =
+export const {  rolesReceived, newsReceived,MainReceived } =
   getDataSlice.actions;
 async function getCookie() {
   let retVal = Cookies.get("authtoken");
@@ -49,16 +44,23 @@ async function getRequestOptions() {
   };
   return GetRequestOptions;
 }
+
+// fetching data from Api
+
 export const fetchRoledata = (url) => async (dispatch) => {
   const response = await axios.get(baseURL + url, await getRequestOptions());
 
   dispatch(rolesReceived(await response.data));
 };
+
+
 export const fetchNewsdata = (url) => async (dispatch) => {
   const response = await axios.get(baseURL + url, await getRequestOptions());
 
   dispatch(newsReceived(await response.data));
 };
+
+
 export const fetchMaindata = (url) => async (dispatch) => {
   const response = await axios.get(baseURL + url, await getRequestOptions());
 

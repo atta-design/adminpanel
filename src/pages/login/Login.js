@@ -3,7 +3,7 @@ import { LoadPanel } from "devextreme-react/load-panel";
 import { useToast } from "../../utils/toast/useToast";
 import getStatusMessage from "../../utils/statusHandler";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../../redux/reducers/loginReducer";
+import { fetchUsers } from "../../redux/reducers/postDataReducer";
 // component
 import ButtonComponent from "../../components/button/Button";
 import TextBoxComponent from "../../components/textBox/TextBox";
@@ -21,6 +21,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loadPanelVisible, setLoadPanelVisible] = useState(false);
 
+// sending username and password to server(in redux reducer)
 
   async function handleSubmit(e) {
     setLoadPanelVisible(true);
@@ -34,6 +35,8 @@ function Login() {
     dispatch(fetchUsers("/Account/Login", postOjb));
     
   }
+      // putting received datas in states and show error messages If it exists
+
   useEffect(() => {
     if (reduxdata.request !== null) {
       if (reduxdata.request.status === 1) {
@@ -41,7 +44,6 @@ function Login() {
       } else {
         setLoadPanelVisible(false);
         showMessage(true, getStatusMessage(reduxdata.request.status), "error");
-        console.log(reduxdata.request.status);
       }
     }
   }, [reduxdata]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchNewsdata } from "../../redux/reducers/getdataReducer";
+import { fetchNewsdata } from "../../redux/reducers/getDataReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
@@ -20,6 +20,9 @@ const [news, setNews] = useState([]);
   
 
   async function getLoadData() {
+    // putting received datas in states and show error messages If it exists
+
+
     try {
       dispatch(fetchNewsdata("/news/list"));
 
@@ -27,6 +30,7 @@ const [news, setNews] = useState([]);
         if (reduxdata.status === 1) {
           setNews(reduxdata.content);
         } else {
+
           showMessage(true, getStatusMessage(reduxdata.status), "error");
         }
       }
@@ -34,6 +38,9 @@ const [news, setNews] = useState([]);
       showMessage(true, "خطایی در واکشی داده رخ داده است", "error");
     }
   }
+
+  // call getLoadData reducer for  getting role list data from api
+
 
   useEffect(() => {
     getLoadData();
