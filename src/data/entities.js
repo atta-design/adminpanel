@@ -1,5 +1,13 @@
 export const entities = [
     {
+        no: 0,
+        title: 'none',
+        entity: 0,
+        action: 'none',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
         no: 1,
         title: 'محصول',
         entity: 1,
@@ -120,11 +128,187 @@ export const entities = [
         sort:2
     },
     {
-        no: 17,
+        no: 18,
         title: 'Slider',
         entity: 17,
         action: 'newsList',
         icon: 'fa fa-clock-o',
         sort:2
     },
+    {
+        no: 19,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 20,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 21,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 22,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 23,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 24,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 25,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 26,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 27,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 28,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 29,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 30,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 31,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 32,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 33,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 34,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 35,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 36,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+    {
+        no: 37,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 38,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 39,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 40,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 31,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },{
+        no: 31,
+        title: 'Slider',
+        entity: 17,
+        action: 'newsList',
+        icon: 'fa fa-clock-o',
+        sort:2
+    },
+
 ]

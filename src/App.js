@@ -36,14 +36,15 @@ function App() {
   return (
     <>
       <ToastProvider>
-        <BrowserRouter>
-          <div
+        <BrowserRouter> <div className="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
+          <div 
             className={
               isAuth
                 ? "App page d-flex flex-row flex-column-fluid"
                 : "App page d-flex flex-row flex-column-fluid none"
             }
           >
+           
             <Sidebar />
             <div className="wrapper d-flex flex-column flex-row-fluid">
               <Topbar />
@@ -52,11 +53,12 @@ function App() {
                 id="kt_content"
               >
                 <SwitchMenu />
-              </div>
+              </div></div>
             </div>
-          </div>
+          
         
           {isAuth === false && <Login />}
+          </div>
         </BrowserRouter>
       </ToastProvider>
     </>

@@ -13,7 +13,9 @@ const en=4
   console.log(re.map(r=>r.title))
   return (
     <div>
-      {data !== undefined &&
+
+      {
+      data !== undefined &&
         data.userModules.map((userModule, index) =>
           userModule.subMenu.length !== 0 ? (
             <div
