@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 function App() {
 
 
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   const reduxdata = useSelector((state) => state.requests);
   const dispach = useDispatch();
 

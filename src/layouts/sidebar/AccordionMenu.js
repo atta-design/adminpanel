@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { entities } from '../../data/entities'
 import "../../App.css";
+
 function AccordionMenu() {
   const data = useSelector((state) => state.getData.MaindataRequest.content);
+  console.log(data)
+const en=4
+ const re= entities.filter((entity)=>entity.entity===en
 
+  )
+  console.log(re.map(r=>r.title))
   return (
     <div>
       {data !== undefined &&
@@ -36,28 +43,32 @@ function AccordionMenu() {
                     </svg>
                   </span>
                 </span>
-                <span className="menu-title"> {userModule.localKey}</span>
+                <span className="menu-title"> {userModule.entity}</span>
                 <span className="menu-arrow"></span>
               </span>
               {userModule.subMenu.map((user, index) => (
-                <div
+                  <div
                   key={index}
-                  className="menu-sub menu-sub-accordion menu-active-bg"
-                >
+                  className="menu-sub menu-sub-accordion menu-active-bg">
                   <div className="menu-item">
-                    <span className="menu-bullet">
-                      <span className="bullet bullet-dot"></span>
-                    </span>
-                    <span className="menu-title">{user.localKey}</span>
+                    <Link className="menu-link" to="##">
+                      <span className="menu-bullet">
+                        <span className="bullet bullet-dot"></span>
+                      </span>
+                      <span className="menu-title">{user.entity}</span>
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <span key={index} className="newscontainer">
-              {" "}
-              <span className="menu-link">
-                <span className="menu-icon">
+           
+                <div                   key={index}
+                className="menu-item newscontainer">
+            <Link className="menu-link" to="##">
+              <span className="menu-bullet">
+              </span>
+              <span className="menu-icon">
                   <span className="svg-icon svg-icon-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -78,17 +89,14 @@ function AccordionMenu() {
                     </svg>
                   </span>
                 </span>
-                <span className="menu-title"> {userModule.localKey}</span>
-                <span className="menu-arrow"></span>
-              </span>
-              <Link className="news" to="##">
-                {userModule.localKey}
-              </Link>
-            </span>
+              <span className="menu-title">                {userModule.entity}
+ </span>
+            </Link>
+          </div>
           )
         )}
 
-      <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
+      {/* <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
         <span className="menu-link">
           <span className="menu-icon">
             <span className="svg-icon svg-icon-2">
@@ -229,7 +237,7 @@ function AccordionMenu() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
