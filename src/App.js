@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
+import SwitchMenu from "./layouts/sidebar/SwitchMenu"
 import Sidebar from "../src/layouts/sidebar/Sidebar";
 import Topbar from "./layouts/topbar/Topbar";
 import Login from "../src/pages/login/Login";
@@ -35,7 +36,7 @@ function App() {
   return (
     <>
       <ToastProvider>
-        <BrowserRouter> <div className="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
+        <BrowserRouter> <div className="header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
           <div 
             className={
               isAuth
@@ -51,7 +52,7 @@ function App() {
                 className="content d-flex flex-column flex-column-fluid"
                 id="kt_content"
               >
-                {/* <SwitchMenu /> */}
+                <SwitchMenu />
               </div></div>
             </div>
           

@@ -9,7 +9,7 @@ export const entities = [
     },
     {
         no: 1,
-        title: 'محصول',
+        title: 'Product',
         entity: 1,
         action: 'Product',
         icon: 'fa fa-clock-o',
@@ -17,7 +17,7 @@ export const entities = [
     },
     {
         no: 2,
-        title: 'کاربر',
+        title: 'User',
         entity: 2,
         action: 'userList',
         icon: 'fa fa-clock-o',
@@ -25,7 +25,7 @@ export const entities = [
     },
     {
         no: 3,
-        title: 'مقاله',
+        title: 'Article',
         entity: 3,
         action: 'Article',
         icon: 'fa fa-clock-o',
@@ -33,7 +33,7 @@ export const entities = [
     },
     {
         no: 4,
-        title: 'خبر',
+        title: 'news',
         entity: 4,
         action: 'newsList',
         icon: 'fa fa-clock-o',
@@ -41,7 +41,7 @@ export const entities = [
     },
     {
         no: 5,
-        title   : 'بنر',
+        title   : 'Banner',
         entity: 5,
         action: 'productList',
         icon: 'fa fa-clock-o',
@@ -88,7 +88,7 @@ export const entities = [
     },
     {
         no: 11,
-        title: 'کپن تخفیف',
+        title: 'Coupon',
         entity: 11,
         action: 'Coupon',
         icon: 'fa fa-clock-o',
@@ -96,31 +96,31 @@ export const entities = [
     },
     {
         no: 12,
-        title: 'دسته بندی',
+        title: 'Category',
         entity: 12,
-        action: 'userList',
+        action: 'Category',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 13,
-        title: 'نظرات',
+        title: 'Comment ',
         entity: 13,
-        action: 'roleList',
+        action: 'Comment ',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 14,
-        title: 'اماکن',
+        title: 'Address',
         entity: 14,
-        action: 'newsList',
+        action: 'Address',
         icon: 'fa fa-clock-o',
         sort:2
     },
     {
         no: 15,
-        title: 'نقش ها',
+        title: 'Role',
         entity: 15,
         action: 'RoleList',
         icon: 'fa fa-clock-o',
@@ -128,7 +128,7 @@ export const entities = [
     },
     {
         no: 16,
-        title: 'تصویر',
+        title: 'Image',
         entity: 16,
         action: 'roleList',
         icon: 'fa fa-clock-o',

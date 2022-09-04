@@ -53,7 +53,7 @@ function AccordionMenu() {
                           className="menu-sub menu-sub-accordion menu-active-bg"
                         >
                           <div className="menu-item">
-                            <Link className="menu-link" to="##">
+                            <Link className="menu-link" to={"/fa/" + Module.title}>
                               <span className="menu-bullet">
                                 <span className="bullet bullet-dot"></span>
                               </span>
@@ -66,7 +66,7 @@ function AccordionMenu() {
                 </div>
               ) : (
                 <div key={index}  className="menu-item newscontainer">
-                  <Link className="menu-link" to="##">
+                  <Link className="menu-link" to={"/fa/" + Module.title}>
                     <span className="menu-bullet"></span>
                     <span className="menu-icon">
                       <span className="svg-icon svg-icon-2">
