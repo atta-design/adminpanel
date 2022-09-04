@@ -5,7 +5,6 @@ import "../../App.css";
 
 function AccordionMenu() {
   const data = useSelector((state) => state.getData.MaindataRequest.content);
-
   return (
     <div>
       {data !== undefined &&
