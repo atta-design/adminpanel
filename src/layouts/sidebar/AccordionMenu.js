@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { entities } from "../../data/entities";
+import React,{useState,useEffect} from 'react'
 import "../../App.css";
+import { useTranslation } from "react-i18next";
 
+
+// localization process
 function AccordionMenu() {
+  const {t}= useTranslation()
+
   const data = useSelector((state) => state.getData.MaindataRequest.content);
+  const[language,setLanguage]=useState()
+
+useEffect(()=>{
+  setLanguage(localStorage.getItem("lng"))
+},[t])
+
   return (
     <div>
       {data !== undefined &&
@@ -40,7 +52,7 @@ function AccordionMenu() {
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title"> {Module.title}</span>
+                    <span className="menu-title">{language==='en'? Module.title :(language==='fa'? Module.fa:Module.ar)}</span>
                     <span className="menu-arrow"></span>
                   </span>
                   {userModule.subMenu.map((user) =>
@@ -52,11 +64,11 @@ function AccordionMenu() {
                           className="menu-sub menu-sub-accordion menu-active-bg"
                         >
                           <div className="menu-item">
-                            <Link className="menu-link" to={"/fa/" + Module.title}>
+                            <Link className="menu-link" to={'/'+language +'/'+ Module.title}>
                               <span className="menu-bullet">
                                 <span className="bullet bullet-dot"></span>
                               </span>
-                              <span className="menu-title">{Module.title}</span>
+                              <span className="menu-title">{language==='en'? Module.title :(language==='fa'? Module.fa:Module.ar)}</span>
                             </Link>
                           </div>
                         </div>
@@ -65,7 +77,7 @@ function AccordionMenu() {
                 </div>
               ) : (
                 <div key={index}  className="menu-item newscontainer">
-                  <Link className="menu-link" to={"/fa/" + Module.title}>
+                  <Link className="menu-link" to={'/'+language +'/'+ Module.title}>
                     <span className="menu-bullet"></span>
                     <span className="menu-icon">
                       <span className="svg-icon svg-icon-2">
@@ -88,7 +100,7 @@ function AccordionMenu() {
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title"> {Module.title}</span>
+                    <span className="menu-title"> {language==='en'? Module.title :(language==='fa'? Module.fa:Module.ar)}</span>
                   </Link>
                 </div>
               )

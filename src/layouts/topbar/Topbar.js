@@ -1,8 +1,18 @@
+import React from 'react'
 import TopbarUserProfile from './TopbarUserProfile';
 import TopbarMessage from './TopbarMessage';
 import TopbarMenu from './TopbarMenu';
+import { useTranslation } from "react-i18next";
+import { useHistory  } from 'react-router-dom'
 
 function Topbar(){
+const {t,i18n }= useTranslation()
+let history = useHistory();
+const languagehandler=(e)=>{
+    i18n.changeLanguage(e.target.value)
+    localStorage.setItem("lng",e.target.value)
+    history.push("/"+e.target.value);}
+
     return (
         <div id="kt_header" className="header align-items-stretch">
             <div className="container-fluid d-flex align-items-stretch justify-content-between">
@@ -31,7 +41,11 @@ function Topbar(){
                     </div>
                     
                     <div className="d-flex align-items-stretch flex-shrink-0">
-                        
+                        <select value={localStorage.getItem("lng")}  onChange={languagehandler}>
+                            <option value='fa'>فارسی</option>
+                            <option value='en'>English</option>
+                            <option value='ar'>عربی</option>
+                        </select>
                         <TopbarMessage />
                         <TopbarUserProfile />
                     </div>

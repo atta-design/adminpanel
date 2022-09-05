@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import AccordionMenu from './AccordionMenu';
 
+
 function SidbarMenu() {
+    const {t}= useTranslation()
+    const[language,setLanguage]=useState()
+
+    useEffect(()=>{
+      setLanguage(localStorage.getItem("lng"))
+    },[t])
+    
     const navigationList = [
-        { id: 1, text: "داشبورد", icon: "home", path: "fa" },
+        { id: 1, text: t('dashbord'), icon: "home", path: language },
         
     ];
+
     
     let asideData = null;
     
