@@ -5,7 +5,7 @@ export const entities = [
         entity: 0,
         fa: 'none',
         icon: 'fa fa-clock-o',
-        ar:'التولیدات'
+        ar:'none'
     },
     {
         no: 1,
@@ -13,7 +13,7 @@ export const entities = [
         entity: 1,
         fa: 'محصولات',
         icon: 'fa fa-clock-o',
-        ar:'التولیدات'
+        ar:'منتجات'
     },
     {
         no: 2,
@@ -29,7 +29,7 @@ export const entities = [
         entity: 3,
         fa: 'مقاله',
         icon: 'fa fa-clock-o',
-        ar:'التولیدات'
+        ar:'مقالة'
     },
     {
         no: 4,
@@ -37,7 +37,7 @@ export const entities = [
         entity: 4,
         fa: 'اخبار',
         icon: 'fa fa-clock-o',
-        ar:'التولیدات'
+        ar:'الخبر'
     },
     {
         no: 5,
@@ -45,7 +45,7 @@ export const entities = [
         entity: 5,
         fa: 'بنر',
         icon: 'fa fa-clock-o',
-        ar:'التولیدات'
+        ar:'لافتة'
     },
     {
         no: 6,
@@ -75,14 +75,14 @@ export const entities = [
         no: 9,
         title: 'Invoice',
         entity: 9,
-        fa: 'roleList',
+        fa: 'صورتحساب',
         icon: 'fa fa-clock-o',
         ar:'التولیدات'
     },{
         no: 10,
         title: 'InvoiceItem ',
         entity: 10,
-        fa: 'InvoiceItem ',
+        fa: 'مورد فاکتور ',
         icon: 'fa fa-clock-o',
         ar:'التولیدات'
     },
