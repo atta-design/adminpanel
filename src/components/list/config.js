@@ -211,7 +211,7 @@ export const ListConfig = {
         pullRefreshEnabled: false,
         repaintChangesOnly: false,
         showSelectionControls: true,
-        tabIndex: 0, // Default Value: 0
+        tabIndex: 6, // Default Value: 0
         itemHoldTimeout: 750, // Default Value: 750
         elementAttr: {},
         menuItems: [], // [{text:'iran', action: onClick()}],

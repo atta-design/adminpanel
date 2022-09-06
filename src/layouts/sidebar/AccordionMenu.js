@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { entities } from "../../data/entities";
+import { LocalKeys } from "../../language/localkeys";
 import React,{useState,useEffect} from 'react'
 import "../../App.css";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,7 @@ function AccordionMenu() {
 
   const data = useSelector((state) => state.getData.MaindataRequest.content);
   const[language,setLanguage]=useState()
-
+console.log(data)
 useEffect(()=>{
   setLanguage(localStorage.getItem("lng"))
 },[t])
@@ -21,9 +21,10 @@ useEffect(()=>{
     <div>
       {data !== undefined &&
         data.userModules.map((userModule) =>
-          entities
-            .filter((entity) => entity.entity === userModule.entity)
+        LocalKeys
+            .filter((entity) => entity.LocalKey === userModule.localKey)
             .map((Module, index) =>
+           
               userModule.subMenu.length !== 0 ? (
                 <div
                   key={index}
@@ -52,23 +53,23 @@ useEffect(()=>{
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title">{language==='en'? userModule.localKey :(language==='fa'? Module.fa:Module.ar)}</span>
+                    <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
                     <span className="menu-arrow"></span>
                   </span>
                   {userModule.subMenu.map((user) =>
-                    entities
-                      .filter((entity) => entity.entity === user.entity)
+                    LocalKeys
+                      .filter((entity) =>entity.LocalKey === user.localKey)
                       .map((Module, index) => (
                         <div
                           key={index}
                           className="menu-sub menu-sub-accordion menu-active-bg"
-                        >
+                        >{ console.log(Module)}
                           <div className="menu-item">
-                            <Link className="menu-link" to={'/'+language +'/'+ Module.title}>
+                            <Link className="menu-link" to={'/'+language +'/'+ Module.localkey_lang.en}>
                               <span className="menu-bullet">
                                 <span className="bullet bullet-dot"></span>
                               </span>
-                              <span className="menu-title">{language==='en'? user.localKey :(language==='fa'? Module.fa:Module.ar)}</span>
+                              <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
                             </Link>
                           </div>
                         </div>
@@ -77,7 +78,7 @@ useEffect(()=>{
                 </div>
               ) : (
                 <div key={index}  className="menu-item newscontainer">
-                  <Link className="menu-link" to={'/'+language +'/'+ Module.title}>
+                  <Link className="menu-link" to={'/'+language +'/'+ Module.localkey_lang.en}>
                     <span className="menu-bullet"></span>
                     <span className="menu-icon">
                       <span className="svg-icon svg-icon-2">
@@ -100,7 +101,7 @@ useEffect(()=>{
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title"> {language==='en'? userModule.localKey :(language==='fa'? Module.fa:Module.ar)}</span>
+                    <span className="menu-title"> {language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
                   </Link>
                 </div>
               )

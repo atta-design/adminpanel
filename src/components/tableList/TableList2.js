@@ -157,7 +157,7 @@ export default function TableList2(props) {
             )
         } else {
             return(
-                <a className={getClassName(column, cIndex)}>
+                <a key={cIndex} className={getClassName(column, cIndex)}>
                     {getValue(column, data)}
                 </a>
             )

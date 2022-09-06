@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="286ffedd-26d2-4ac3-b350-8a48e8428642" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/list/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/CountryCreateModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CountryCreateModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tableList/TableList2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tableList/TableList2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/entities.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/language/i18next.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/language/i18next.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/sidebar/AccordionMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/sidebar/AccordionMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/sidebar/SwitchMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/sidebar/SwitchMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/topbar/Topbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/topbar/Topbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EOQecTrRQzXhvQzOm38PwBent3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="286ffedd-26d2-4ac3-b350-8a48e8428642" name="Changes" comment="" />
+      <created>1662464251064</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662464251064</updated>
+      <workItem from="1662464252762" duration="361000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Cookies from "js-cookie";
-
 import SwitchMenu from "./layouts/sidebar/SwitchMenu";
 import Sidebar from "../src/layouts/sidebar/Sidebar";
 import Topbar from "./layouts/topbar/Topbar";
 import Login from "../src/pages/login/Login";
 import { ToastProvider } from "./utils/toast/toastProvider";
 import { fetchMaindata } from "./redux/reducers/getDataReducer";
-
 import { useDispatch, useSelector } from "react-redux";
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -25,7 +23,7 @@ function App() {
   // authentication with Cookies
   useEffect(() => {
     if (Cookies.get("status") !== null) {
-      if (Cookies.get("status") === "1") {
+      if (Cookies.get("status") === "success") {
         setIsAuth(true);
       }
     }
@@ -61,10 +59,11 @@ function App() {
               </div>
             </div>
 
-            {Cookies.get("status") !== "1" && isAuth === false && <Login />}
+            {  isAuth === false && <Login />}
           </div>
         </BrowserRouter>
       </ToastProvider>
+    
     </>
   );
 }

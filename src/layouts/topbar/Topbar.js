@@ -14,7 +14,11 @@ const languagehandler=(e)=>{
     i18n.changeLanguage(e.target.value)
     localStorage.setItem("lng",e.target.value)
     history.push("/"+e.target.value);}
-
+    var selectValue = localStorage.getItem('lng');
+    if(null === selectValue)
+{
+    selectValue = 'fa';
+}
     return (
         <div id="kt_header" className="header align-items-stretch">
             <div className="container-fluid d-flex align-items-stretch justify-content-between">
@@ -43,7 +47,8 @@ const languagehandler=(e)=>{
                     </div>
                     
                     <div className="d-flex align-items-stretch flex-shrink-0">
-                        <select value={localStorage.getItem("lng")}  onChange={languagehandler}>
+
+                        <select value={selectValue}  onChange={languagehandler}>
                             <option value='fa'>فارسی</option>
                             <option value='en'>English</option>
                             <option value='ar'>عربی</option>

@@ -40,7 +40,8 @@ function Login() {
   useEffect(() => {
     if (reduxdata.request !== null) {
       if (reduxdata.request.status === 1) {
-        Cookies.set("status", reduxdata.request.status);
+        const status='success'
+        Cookies.set("status", status);
 
         setLoadPanelVisible(false);
       } else {
@@ -49,7 +50,7 @@ function Login() {
       }
     }
   }, [reduxdata]);
-
+console.log(reduxdata)
   return (
     <div className="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
       <a href="index.html" className="mb-12">

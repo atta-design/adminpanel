@@ -13,7 +13,7 @@ import { default as SelectBox } from '../selectBox/SelectBox';
 import {default as FileUploader} from '../fileUploader/FileUploader';
 
 //utiles
-import { useToast } from '../../utils/toast/useToast';
+// import { useToast } from '../../utils/toast/useToast';
 import getStatusMessage from '../../utils/statusHandler';
 
 // configs
@@ -33,7 +33,7 @@ export default function CountryCreateModal(props) {
 
 	const titleModal = props.title
 
-	const { showMessage } = useToast();
+	// const { showMessage } = useToast();
     const [loadPanelVisible, setLoadPanelVisible] = useState(false);
 
     const [title, setTitle] = useState(null);
@@ -205,15 +205,15 @@ export default function CountryCreateModal(props) {
 
             if (data.status === 1) {
                 setLoadPanelVisible(false)
-                showMessage(true, getStatusMessage(data.status), 'success');
+                // showMessage(true, getStatusMessage(data.status), 'success');
 
             } else {
                 setLoadPanelVisible(false)
-                showMessage(true, getStatusMessage(data.status), 'error');
+                // showMessage(true, getStatusMessage(data.status), 'error');
             }
         }
         catch (e) {
-            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            // showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
         }
     }
 	

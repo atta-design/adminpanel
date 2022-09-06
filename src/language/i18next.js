@@ -30,4 +30,3 @@ i18next.use(initReactI18next).init({
 
   lng: localStorage.getItem("lng"),
 });
-// localStorage.setItem("lng",'fa')
