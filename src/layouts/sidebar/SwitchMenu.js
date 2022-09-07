@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {Switch, Route,Redirect } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Countries from '../../pages/countries/List'
-
+import Roles from '../../pages/role/Roles'
 
 
 function SwitchMenu(){
@@ -26,7 +26,7 @@ function SwitchMenu(){
 </Route>
            
             <Route path={'/'+language +'/Nations'} component={Countries} />
-            
+            <Route path={'/'+language +'/Roles'} component={Roles} />
             
         </Switch>
     )

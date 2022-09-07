@@ -12,7 +12,6 @@ function AccordionMenu() {
 
   const data = useSelector((state) => state.getData.MaindataRequest.content);
   const[language,setLanguage]=useState()
-console.log(data)
 useEffect(()=>{
   setLanguage(localStorage.getItem("lng"))
 },[t])
@@ -63,7 +62,7 @@ useEffect(()=>{
                         <div
                           key={index}
                           className="menu-sub menu-sub-accordion menu-active-bg"
-                        >{ console.log(Module)}
+                        >
                           <div className="menu-item">
                             <Link className="menu-link" to={'/'+language +'/'+ Module.localkey_lang.en}>
                               <span className="menu-bullet">

@@ -1,15 +1,13 @@
 import {useContext } from 'react';
-// import { PostApi } from '../../managers/HttpManager';
 
 
-export default function TableList1(props) {
+export default function Rolelist(props) {
 
     const config = props.config
-    const Modal = props.modal.obj
-    const modalTitle = props.modal.title
+   
     const DataContext = props.dataContext
 
-    const {dataListView, uid} = useContext(DataContext);
+    const {dataListView, } = useContext(DataContext);
 
 
     const getTemplate = (data, column, cIndex) => {
@@ -32,11 +30,12 @@ export default function TableList1(props) {
                 <td key={cIndex}>
                     <div className="d-flex align-items-center">
                         <div className="symbol symbol-50px me-5">
-                            <span className="bullet bullet-vertical h-40px bg-success"></span>
+                            <span className="bullet h-60px bg-primary"></span>
                         </div>
                         <div className="d-flex justify-content-start flex-column">
                             {getTemplate(data, column, cIndex)}
                         </div>
+                        
                     </div>
                 </td>
             )
@@ -87,31 +86,18 @@ export default function TableList1(props) {
         return data[column.dataField]
     }
 
-    // const isEventsAvailable = () => {
-    //     if (config.events) {
-    //         return true
-    //     }
-    //     return false
-    // }
-
-    // const checkEventsAvailable = (cIndex) => {
-    //     if (isEventsAvailable()) {
-    //         return(<th key={cIndex} className="min-w-200px">عملیات</th>)
-    //     }
-    // }
-
+   
     
 
     
     return (
       
         <div className="table-responsive">
-            <table className="table align-middle gs-0 gy-4">
+            <table className="table align-middle gs-0 gy-8">
                 <thead>
-                    <tr className="fw-bolder text-muted bg-light">
+                    <tr className="fw-bolder text-information  bg-secondary">
                         {
                             config.columns.map((column, cIndex) => {
-                                console.log(column.caption)
                                 return(
                                     
                                     <th key={cIndex} className={getHeaderClassName(column, cIndex)}>{column.caption}</th>
@@ -137,7 +123,6 @@ export default function TableList1(props) {
                     }
                 </tbody>
             </table>
-            {/* <Modal title={modalTitle} uid={uid}/> */}
         </div>
     )
 }
