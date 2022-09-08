@@ -1,31 +1,18 @@
 import {useContext } from 'react';
-// import { PostApi, GetDataApi } from '../../managers/HttpManager';
-
-// layouts
-import Loading from '../../layouts/common/Spinner';
-
-// utils
-// import { useToast } from '../../utils/toast/useToast';
-// import getStatusMessage from '../../utils/statusHandler';
 
 import './style.css';
-// const Swal = require('sweetalert2');
 
 
 export default function TableList2(props) {
 
     const config = props.config;
-    // const Modal = props.modal.obj;
-    // const modalTitle = props.modal.title;
+  
     const DataContext = props.dataContext;
     
-    // const { showMessage } = useToast();
 
     const {
         dataListView,
        
-        isLoading,
-        // uid,
     } = useContext(DataContext);
 
 
@@ -124,7 +111,7 @@ export default function TableList2(props) {
     return (
        
         <div className="table-responsive">
-            <table className="table align-middle gs-0 gy-4">
+            <table className="table align-middle gs-0 gy-5">
                 <thead>
                     <tr className="fw-bolder text-muted bg-light">
                         {
@@ -153,7 +140,6 @@ export default function TableList2(props) {
                     }
                 </tbody>
             </table>
-            {/* <Modal title={modalTitle} uid={uid}/> */}
         </div>
     )
 }

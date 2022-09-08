@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { LoadPanel } from "devextreme-react/load-panel";
 import { useToast } from "../../utils/toast/useToast";
 import getStatusMessage from "../../utils/statusHandler";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +10,7 @@ import TextBoxComponent from "../../components/textBox/TextBox";
 import { ButtonConfig as SubmitConfig } from "./submitButtonConfig";
 import { TextBoxConfig as EmailConfig } from "./emailTextBoxConfig";
 import { TextBoxConfig as PasswordConfig } from "./passwordTextBoxConfig";
+import Loading from '../../layouts/common/Loading'
 
 function Login() {
   const reduxdata = useSelector((state) => state.requests);
@@ -45,14 +45,18 @@ function Login() {
 
         setLoadPanelVisible(false);
       } else {
-        setLoadPanelVisible(false);
+       
         showMessage(true, getStatusMessage(reduxdata.request.status), "error");
-      }
+    setLoadPanelVisible(false);
+      } 
     }
-  }, [reduxdata]);
-console.log(reduxdata)
+}, [reduxdata]);
+
+
   return (
+    <div> {loadPanelVisible ? < Loading/>:
     <div className="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+
       <a href="index.html" className="mb-12">
         <img
           alt="Logo"
@@ -93,18 +97,11 @@ console.log(reduxdata)
           </div>
           <div className="text-center">
             <ButtonComponent config={SubmitConfig}></ButtonComponent>
-            <LoadPanel
-              visible={loadPanelVisible}
-              shading={true}
-              showPane={true}
-              showIndicator={true}
-              closeOnOutsideClick={false}
-              shadingColor="rgba(0,0,0,0.4)"
-            />
+          
           </div>
         </form>
       </div>
-    </div>
+    </div>}</div>
   );
 }
 

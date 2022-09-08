@@ -8,7 +8,7 @@ import { TableListConfig } from "./configs/tableListConfig";
 import RoleEditModal from "../../components/modal/RoleEditModal";
 import { fetchRoledata } from "../../redux/reducers/getDataReducer";
 import { useDispatch, useSelector } from "react-redux";
-
+import Loading from "../../layouts/common/Loading";
 export const DataContext = createContext({
   dataListView: [],
   setDataListView: () => {},
@@ -54,11 +54,12 @@ function Roles2() {
 
   async function getLoadData(e) {
     dispatch(fetchRoledata(`/Role/List`));
-    setIsLoading(false);
     try {
       if (reduxdata.length !== 0) {
         if (reduxdata.status === 1) {
           setDataCount(reduxdata.content.count);
+        setIsLoading(false);
+
 
           setDataListView(reduxdata.content.items);
         } else {
@@ -74,10 +75,9 @@ function Roles2() {
     getLoadData();
   }, [reduxdata.status]);
 
-  console.log();
   return (
     <DataContext.Provider value={value}>
-      <div className="post d-flex flex-column-fluid" id="kt_post">
+   {isLoading?<Loading/>:   <div className="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" className="container">
           <div className="card mb-5 mb-xl-8">
             <div className="card mb-5 mb-xl-8">
@@ -94,11 +94,12 @@ function Roles2() {
                 {reduxdata.length !== 0 && (
                   <div>
                     {" "}
-                    <Rolelist
+                      <Rolelist
                       config={TableListConfig}
                       dataContext={DataContext}
                       modal={{ obj: RoleEditModal, title: "ویرایش نقش" }}
                     />
+                  
                
                   
                   </div>
@@ -107,7 +108,7 @@ function Roles2() {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
      
     </DataContext.Provider>
   );

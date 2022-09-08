@@ -5,7 +5,7 @@ import React, { useEffect, useState, createContext } from 'react';
 // components
 import TableList2 from '../../components/tableList/TableList2';
 import {default as SelectBox} from '../../components/selectBox/SelectBox';
-
+import Loading from '../../layouts/common/Loading';
 // configs
 import { TableListConfig } from './configs/List';
 import { SelectBoxConfig as Event } from './configs/event';
@@ -113,8 +113,8 @@ export default function Countries() {
     return (
         <DataContext.Provider value={value}>
             <div className="post d-flex flex-column-fluid" id="kt_post">
-                <div id="kt_content_container" className="container">
-                    <div className="card mb-5 mb-xl-8">
+                <div id="kt_content_container" className="container ">
+                    <div className="card mb-5 mb-xl-8 w-75">
                         <div className="card mb-5 mb-xl-8">
                             <div className="card-header border-0 pt-5">
                                 <div className="card-title">
@@ -135,7 +135,6 @@ export default function Countries() {
                                             type="text"
                                             className="form-control form-control-solid w-250px ps-15"
                                             placeholder="جستجو"
-                                            // disabled={isLoading}
                                             onChange={(e) => handleSearch(e.target.value)}
                                         />
                                     </div>
@@ -157,9 +156,10 @@ export default function Countries() {
                                 </div>
                             </div>
 
-                            <div className="card-body py-3">
-                                <TableList2 config={TableListConfig} pageURL={'country/list'} dataContext={DataContext} modal={{obj:CountryEditModal, title:'ویرایش اطلاعات کشور'}} />
-                                <Pagination dataCount={dataCount} pageList={pageList} pageURL={'country/list'} dataContext={DataContext}/>
+                            <div className="card-body py-3 w-100">
+                                {isLoading?<Loading/>:(<div> <TableList2 config={TableListConfig} pageURL={'country/list'} dataContext={DataContext} modal={{obj:CountryEditModal, title:'ویرایش اطلاعات کشور'}} />
+                                <Pagination dataCount={dataCount} pageList={pageList} pageURL={'country/list'} dataContext={DataContext}/></div>)}
+                               
                             </div>
                             <CountryCreateModal title={'افزودن کشور'}/>
                         </div>

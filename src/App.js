@@ -17,6 +17,7 @@ function App() {
     if (reduxdata.request !== null) {
       if (reduxdata.request.status === 1) {
         setIsAuth(true);
+
       }
     }
   }, [reduxdata]);
@@ -37,6 +38,7 @@ function App() {
   return (
     <>
       <ToastProvider>
+      
         <BrowserRouter>
           {" "}
           <div className="header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
@@ -62,6 +64,7 @@ function App() {
             {  isAuth === false && <Login />}
           </div>
         </BrowserRouter>
+
       </ToastProvider>
     
     </>
