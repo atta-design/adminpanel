@@ -114,7 +114,7 @@ export default function Countries() {
         <DataContext.Provider value={value}>
             <div className="post d-flex flex-column-fluid" id="kt_post">
                 <div id="kt_content_container" className="container ">
-                    <div className="card mb-5 mb-xl-8 w-75">
+                    <div className="card mb-5 mb-xl-8 w-100">
                         <div className="card mb-5 mb-xl-8">
                             <div className="card-header border-0 pt-5">
                                 <div className="card-title">
