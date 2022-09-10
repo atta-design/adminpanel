@@ -1,19 +1,15 @@
-import React, { useEffect, useState, createContext } from "react";
 import Pagination from "../../components/paging/Pagination";
-import { ButtonConfig as AddRuleButtonConfig } from './AddRuleButtonConfig';
-import {default as Button} from '../../components/button/Button';
-import { useHistory } from 'react-router-dom';
-
+import React, { useEffect, useState, createContext } from "react";
 // components
-import Rolelist from "./Rolelist";
+import TableList1 from "../../components/tableList/TableList1";
 //utiles
 import { useToast } from "../../utils/toast/useToast";
 import getStatusMessage from "../../utils/statusHandler";
 import { TableListConfig } from "./configs/tableListConfig";
 import RoleEditModal from "../../components/modal/RoleEditModal";
-import { fetchRoledata } from "../../redux/reducers/getDataReducer";
+import { fetchRoledata } from "../../redux/reducers/getdataReducer";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../layouts/common/Loading";
+
 export const DataContext = createContext({
   dataListView: [],
   setDataListView: () => {},
@@ -34,10 +30,9 @@ export const DataContext = createContext({
 
 function Roles2() {
   const reduxdata = useSelector((state) => state.getData.roleRequest);
-  const history = useHistory();
 
   const dispatch = useDispatch();
-  const pageList =5;
+  const pageList = 6;
   const { showMessage } = useToast();
   const [uid, setUid] = useState("");
   const [dataCount, setDataCount] = useState(0);
@@ -60,13 +55,13 @@ function Roles2() {
   };
 
   async function getLoadData(e) {
-    dispatch(fetchRoledata(`/Role/List`));
+    dispatch(fetchRoledata(`/role/list?From=${0}&Count=${pageList}`));
+    setIsLoading(false);
+
     try {
       if (reduxdata.length !== 0) {
         if (reduxdata.status === 1) {
           setDataCount(reduxdata.content.count);
-        setIsLoading(false);
-
 
           setDataListView(reduxdata.content.items);
         } else {
@@ -82,13 +77,14 @@ function Roles2() {
     getLoadData();
   }, [reduxdata.status]);
 
+  console.log();
   return (
     <DataContext.Provider value={value}>
-   {isLoading?<Loading/>:   <div className="post d-flex flex-column-fluid" id="kt_post">
+      <div className="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" className="container">
           <div className="card mb-5 mb-xl-8">
             <div className="card mb-5 mb-xl-8">
-              <div className="card-header border-50 pt-5">
+              <div className="card-header border-0 pt-5">
                 <h3 className="card-title align-items-start flex-column">
                   <span className="card-label fw-bolder fs-3 mb-1">
                     لیست نقش ها
@@ -96,37 +92,30 @@ function Roles2() {
                 </h3>
                 <div className="card-toolbar"></div>
               </div>
-              <Button 
-                                    config={AddRuleButtonConfig}
-                                    onClick={() => {
-                                        history.replace("/role/add")
-                                    }}
-                                />
+
               <div className="card-body py-3">
                 {reduxdata.length !== 0 && (
                   <div>
                     {" "}
-                      <Rolelist
+                    <TableList1
                       config={TableListConfig}
                       dataContext={DataContext}
                       modal={{ obj: RoleEditModal, title: "ویرایش نقش" }}
                     />
-                  
-                  <Pagination
+               
+                    <Pagination
                       dataCount={dataCount}
                       pageList={pageList}
                       pageURL={"role/list"}
                       dataContext={DataContext}
                     />
-                  
                   </div>
                 )}
               </div>
             </div>
           </div>
         </div>
-      </div>}
-     
+      </div>
     </DataContext.Provider>
   );
 }

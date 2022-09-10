@@ -79,7 +79,19 @@ async function PostApi(url, postData, contenttype) {
 
   return retval;
 }
+async function axiosPut(url, postData,) {
+  const retval = { status: 0, content: null };
 
+  const { data } = await axios.patch(baseURL + url, postData).catch((error) => {
+    console.log(error);
+  });
+  retval.status = data.status;
+  if (data.status === 1) {
+    retval.content = data.content;
+  }
+
+  return retval;
+}
 async function axiosPost(url, postData, contenttype) {
   const retval = { status: 0, content: null };
 
@@ -94,4 +106,4 @@ async function axiosPost(url, postData, contenttype) {
   return retval;
 }
 
-export { GetDataApi, getCookie, PostApi, baseURL, axiosPost };
+export { GetDataApi, getCookie, PostApi, baseURL, axiosPost,axiosPut };

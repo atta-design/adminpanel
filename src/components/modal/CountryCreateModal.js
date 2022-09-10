@@ -185,6 +185,7 @@ export default function CountryCreateModal(props) {
     }, []);
 
     async function postCountry(e) {
+        console.log('create')
         try {
 
             setLoadPanelVisible(true)

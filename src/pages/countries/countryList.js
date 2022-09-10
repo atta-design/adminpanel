@@ -1,6 +1,7 @@
 import { GetDataApi } from '../../managers/HttpManager';
 import Pagination from '../../components/paging/Pagination';
 import React, { useEffect, useState, createContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // components
 import TableList2 from '../../components/tableList/TableList2';
@@ -37,6 +38,7 @@ export const DataContext = createContext({
 
 
 export default function Countries() {
+    const history = useHistory();
 
     const pageList = 6;
     const { showMessage } = useToast();

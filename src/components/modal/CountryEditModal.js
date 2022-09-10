@@ -9,19 +9,16 @@ import { GetDataApi, PostApi } from '../../managers/HttpManager';
 
 // components
 import TextBoxComponent from '../textBox/TextBox';
-import { default as Button } from '../button/Button';
-import { default as SelectBox } from '../selectBox/SelectBox';
+
 import {default as FileUploader} from '../fileUploader/FileUploader';
 
 //utiles
 import { useToast } from '../../utils/toast/useToast';
 
 // configs
-import { SelectBoxConfig as StatusConfig } from './configs/country/StatusConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from './configs/country/TitleConfig';
 import { FileUploaderConfig as ImageDropZone } from './configs/country/imageConfig';
-import { SelectBoxConfig as LanguageConfig } from './configs/country/LanguageConfig';
-import { ButtonConfig as SubmitButtonConfig } from './configs/country/SubmitButtonConfig';
+
 import { FileUploaderConfig as ThumbnailDropZone } from './configs/country/thumbnailConfig';
 
 // styles
@@ -37,7 +34,7 @@ export default function CountryEditModal(props) {
 	const { showMessage } = useToast();
     const [isLoading, setIsLoading] = useState(true);
     const [loadPanelVisible, setLoadPanelVisible] = useState(true);
-
+    const [countryUID, setcountryUID] = useState(null);
     const [title, setTitle] = useState(null);
     const [image, setImage] = useState(null);
     const [status, setStatus] = useState(null);
@@ -190,6 +187,7 @@ export default function CountryEditModal(props) {
                     const data = await GetDataApi('/country/item?uid=' + uid);
 
                     if (data.status === 1) {
+                        setcountryUID(data.content.countryUID);
                         setTitle(data.content.title);
                         setStatus(data.content.status);
                         setLanguage(data.content.language);
@@ -219,7 +217,48 @@ export default function CountryEditModal(props) {
     }, [uid]);
 
     async function postRole(e) {
-    
+          e.preventDefault();
+         const countryList = await GetDataApi('/country/item');
+         console.log(countryList)
+       try {
+      
+            setLoadPanelVisible(true)
+          
+            // countryList.map((data) => sendUsersRole.push(
+            //     {'userUID': data.userUID, 'name': ''}
+            // ))
+            var postOjb = {
+                "title": title,
+                // "status": status,
+                "image": imageSource,
+                // "language": language,
+                "tradition": tradition,
+                "foodCulture": foodCulture,
+                "thumbnail": thumbnailSource,
+                "popularCondiments": popularCondiments,
+
+
+                "status": 0,
+  "createDate": 0,
+  "modifyDate": 0,
+  "countryUID": countryUID,
+  "language": 0,
+  "thumbnailUID": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "imageUID": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  
+            };
+
+            const data = await PostApi('/country/Edit', postOjb);
+
+            if (data.status === 1) {
+                setLoadPanelVisible(false)
+
+            } else {
+                setLoadPanelVisible(false)
+            }
+        }
+        catch (e) {
+        }
     }
 	
 
@@ -257,34 +296,7 @@ export default function CountryEditModal(props) {
                                                 }
                                             </div>
                                         </div>
-                                        {/* <div className="separator separator-dashed my-6"></div>
-                                        <div className="col-md-18">
-                                            <div className="row mb-5">
-                                                <div className="col-md-6 fv-row">
-                                                    <label className="fs-6 fw-bold mb-2">زبان</label>
-                                                    {
-                                                        language != null &&
-                                                        <SelectBox
-                                                            config={LanguageConfig}
-                                                            defaultValue={language}
-                                                            onValueChanged={(data) => setLanguage(data.value)}
-                                                        ></SelectBox>
-                                                    }
-                                                </div>
-
-                                                <div className="col-md-6 fv-row">
-                                                    <label className="fs-6 fw-bold mb-2">وضعیت</label>
-                                                    {   
-                                                        status != null &&
-                                                        <SelectBox
-                                                            config={StatusConfig}
-                                                            defaultValue={status}
-                                                            onValueChanged={(data) => setStatus(data.value)}
-                                                        ></SelectBox>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div> */}
+                                       
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
@@ -292,6 +304,15 @@ export default function CountryEditModal(props) {
                                                 {
                                                     foodCulture != null &&
                                                     <CKEditor
+                                                        config={ {
+                                                        language: {
+                                                          
+                                                            ui: 'en',
+                                                
+                                                            content: 'ar'
+                                                            
+                                                        },
+                                                    } }
                                                         data={foodCulture}
                                                         editor={ ClassicEditor }
                                                         onChange={ ( event, editor ) => {
@@ -313,6 +334,13 @@ export default function CountryEditModal(props) {
                                                 {
                                                     popularCondiments != null &&
                                                     <CKEditor
+                                                    config={ {
+                                                        language: {
+                                                            ui: 'en',
+                                                
+                                                            content: 'ar'
+                                                        },
+                                                    } }
                                                         data={popularCondiments}
                                                         editor={ ClassicEditor }
                                                         onChange={ ( event, editor ) => {
@@ -334,10 +362,18 @@ export default function CountryEditModal(props) {
                                                 {
                                                     tradition != null &&
                                                     <CKEditor
+                                                    config={ {
+                                                        language: {
+                                                            ui: 'en',
+                                                
+                                                            content: 'ar'
+                                                        },
+                                                    } }
                                                         data={tradition}
                                                         editor={ ClassicEditor }
                                                         onChange={ ( event, editor ) => {
                                                             setTradition(editor.getData());
+                                                           
                                                         }}
                                                         onReady={(editor) => {
                                                             editor.editing.view.change( writer => {
@@ -415,7 +451,7 @@ export default function CountryEditModal(props) {
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex justify-content-end py-6 px-9">
-                                    <Button config={SubmitButtonConfig} />
+                                    <button class="btn btn-primary" type='submit'>ذخیره</button>
                                     <LoadPanel
                                         shading={true}
                                         showPane={true}

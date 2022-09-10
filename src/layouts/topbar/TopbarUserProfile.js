@@ -1,5 +1,21 @@
-
+import { useTranslation } from "react-i18next";
+import { useHistory  } from 'react-router-dom'
 function TopbarUserProfile() {
+    const {t,i18n }= useTranslation()
+let history = useHistory();
+    const languagehandler=(e)=>{
+        i18n.changeLanguage(e)
+        localStorage.setItem("lng",e)
+        history.push("/"+e);
+       
+    }
+        var selectValue = localStorage.getItem('lng');
+        if(null === selectValue)
+    {
+        selectValue = 'fa';
+    }
+
+     console.log(selectValue)
     return (
         <>
             <div className="d-flex align-items-stretch flex-shrink-0">
@@ -37,6 +53,47 @@ function TopbarUserProfile() {
                         <div className="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
 
                         </div>
+                        <div className="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
+													<a href="#" className="menu-link px-5">
+														<span className="menu-title position-relative">زبان
+														<span className="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">{selectValue==='en'?
+                                                        <span>English</span>:(selectValue==='fa'?<span>فارسی</span>:<span>عربی</span>)}
+                                                        {selectValue==='en'?
+                                                        <span><img className="w-15px h-15px rounded-1 ms-2" src='/assets/media/flags/united-states.svg' alt="metronic" />
+                                                        </span>:(selectValue==='fa'?<span><img className="w-15px h-15px rounded-1 ms-2" src='/assets/media/flags/iran.svg' alt="metronic" /></span>:
+                                                        <span><img className="w-15px h-15px rounded-1 ms-2" src='/assets/media/flags/saudi-arabia.svg' alt="metronic" /></span>)}
+														</span></span>
+													</a>
+													<div className="menu-sub menu-sub-dropdown w-175px py-4">
+														<div className="menu-item px-3" onClick={()=>languagehandler('fa')}>
+															<a href="##" className="menu-link d-flex px-5">
+															<span className="symbol symbol-20px me-4">
+																<img className="rounded-1" src="/assets/media/flags/iran.svg" alt="metronic" />
+															</span>فارسی</a>
+														</div>
+														<div className="menu-item px-3" onClick={()=>languagehandler('en')} >
+															<a href="##" className="menu-link d-flex px-5 ">
+															<span className="symbol symbol-20px me-4">
+																<img className="rounded-1" src="/assets/media/flags/united-states.svg" alt="metronic" />
+															</span>انگلیسی</a>
+														</div>
+														
+														
+														
+														<div className="menu-item px-3" onClick={()=>languagehandler('ar')}>
+															<a href="##" className="menu-link d-flex px-5">
+															<span className="symbol symbol-20px me-4">
+																<img className="rounded-1" src="/assets/media/flags/saudi-arabia.svg" alt="metronic" />
+															</span>عربی</a>
+														</div>
+														
+													
+													
+													
+														
+													</div>
+													
+												</div>
                         <div className="menu-item px-5 my-1">
                             <a href="account/settings.html" className="menu-link px-5">اکانت تنظیمات</a>
                         </div>

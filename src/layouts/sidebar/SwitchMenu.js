@@ -3,6 +3,9 @@ import {Switch, Route,Redirect } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Countries from '../../pages/countries/countryList'
 import Roles from '../../pages/role/Roles'
+import AddRole from '../../pages/role/Add';
+import EditRole from '../../pages/role/Edit';
+import CountryCreateModal from '../../components/modal/CountryCreateModal';
 
 
 function SwitchMenu(){
@@ -27,7 +30,10 @@ function SwitchMenu(){
            
             <Route path={'/'+language +'/Nations'} component={Countries} />
             <Route path={'/'+language +'/Roles'} component={Roles} />
-            
+            <Route path="/role/add" component={AddRole} />
+            <Route path="/role/Edit" component={EditRole} />
+            <Route path="/Nations/add" component={CountryCreateModal} />
+
         </Switch>
     )
 }
