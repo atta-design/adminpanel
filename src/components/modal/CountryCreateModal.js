@@ -9,18 +9,15 @@ import  ClassicEditor  from '@ckeditor/ckeditor5-build-classic';
 // components
 import TextBoxComponent from '../textBox/TextBox';
 import { default as Button } from '../button/Button';
-import { default as SelectBox } from '../selectBox/SelectBox';
 import {default as FileUploader} from '../fileUploader/FileUploader';
 
 //utiles
-// import { useToast } from '../../utils/toast/useToast';
+import { useToast } from '../../utils/toast/useToast';
 import getStatusMessage from '../../utils/statusHandler';
 
 // configs
-import { SelectBoxConfig as StatusConfig } from './configs/country/StatusConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from './configs/country/TitleConfig';
 import { FileUploaderConfig as ImageDropZone } from './configs/country/imageConfig';
-import { SelectBoxConfig as LanguageConfig } from './configs/country/LanguageConfig';
 import { ButtonConfig as SubmitButtonConfig } from './configs/country/SubmitButtonConfig';
 import { FileUploaderConfig as ThumbnailDropZone } from './configs/country/thumbnailConfig';
 
@@ -33,13 +30,11 @@ export default function CountryCreateModal(props) {
 
 	const titleModal = props.title
 
-	// const { showMessage } = useToast();
+	const { showMessage } = useToast();
     const [loadPanelVisible, setLoadPanelVisible] = useState(false);
 
     const [title, setTitle] = useState(null);
     const [image, setImage] = useState(null);
-    const [status, setStatus] = useState(null);
-    const [language, setLanguage] = useState(null);
     const [thumbnail, setThumbnail] = useState(null);
     const [tradition, setTradition] = useState(null);
     const [foodCulture, setFoodCulture] = useState(null);
@@ -171,8 +166,6 @@ export default function CountryCreateModal(props) {
     const nullVariables = () => {
         setTitle(null);
         setImage(null);
-        setStatus(null);
-        setLanguage(null);
         setThumbnail(null);
         setTradition(null);
         setFoodCulture(null);
@@ -193,9 +186,7 @@ export default function CountryCreateModal(props) {
 
             var postOjb = {
                 "title": title,
-                // "status": status,
                 "image": imageSource,
-                // "language": language,
                 "tradition": tradition,
                 "foodCulture": foodCulture,
                 "thumbnail": thumbnailSource,
@@ -206,15 +197,16 @@ export default function CountryCreateModal(props) {
 
             if (data.status === 1) {
                 setLoadPanelVisible(false)
-                // showMessage(true, getStatusMessage(data.status), 'success');
+                showMessage(true, getStatusMessage(data.status), 'success');
+                window.location.reload()
 
             } else {
                 setLoadPanelVisible(false)
-                // showMessage(true, getStatusMessage(data.status), 'error');
+                showMessage(true, getStatusMessage(data.status), 'error');
             }
         }
         catch (e) {
-            // showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
         }
     }
 	
@@ -248,30 +240,7 @@ export default function CountryCreateModal(props) {
                                                 }
                                             </div>
                                         </div>
-                                        {/* <div className="separator separator-dashed my-6"></div>
-                                        <div className="col-md-18">
-                                            <div className="row mb-5">
-                                                <div className="col-md-6 fv-row">
-                                                    <label className="fs-6 fw-bold mb-2">زبان</label>
-                                                    {
-                                                        <SelectBox
-                                                            config={LanguageConfig}
-                                                            onValueChanged={(data) => setLanguage(data.value)}
-                                                        ></SelectBox>
-                                                    }
-                                                </div>
-
-                                                <div className="col-md-6 fv-row">
-                                                    <label className="fs-6 fw-bold mb-2">وضعیت</label>
-                                                    {
-                                                        <SelectBox
-                                                            config={StatusConfig}
-                                                            onValueChanged={(data) => setStatus(data.value)}
-                                                        ></SelectBox>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div> */}
+                                     
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">

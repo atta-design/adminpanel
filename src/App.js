@@ -42,7 +42,7 @@ function App() {
         <BrowserRouter>
           {" "}
           <div className="header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
-          { isAuth === true && 
+          
             <div
               className={
                 isAuth
@@ -60,7 +60,7 @@ function App() {
                   <SwitchMenu />
                 </div>
               </div>
-            </div>}
+            </div>
 
             { isAuth === false && <Login />}
           </div>

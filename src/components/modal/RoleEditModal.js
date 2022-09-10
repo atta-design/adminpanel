@@ -125,6 +125,7 @@ export default function RoleEditModal(props) {
             if (data.status === 1) {
                 setLoadPanelVisible(false)
                 showMessage(true, getStatusMessage(data.status), 'success');
+                window.location.reload()
 
             } else {
                 setLoadPanelVisible(false)
@@ -206,7 +207,6 @@ export default function RoleEditModal(props) {
                                                         setValue={setUsersRole}
                                                         defaultValue={usersRole}
                                                         filterParams={[`entity=2`]}
-                                                        // filterParams={[`entity=${entity}`]}
                                                     /> 
                                                 }
                                             </div>

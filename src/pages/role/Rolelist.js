@@ -1,12 +1,8 @@
 import {useContext } from 'react';
 import { PostApi } from '../../managers/HttpManager';
-import { ButtonConfig as AddRuleButtonConfig } from './AddRuleButtonConfig';
-import {default as Button} from '../../components/button/Button';
-import { useHistory } from 'react-router-dom';
 
 
 export default function Rolelist(props) {
-    const history = useHistory();
 
     const config = props.config
     const Modal = props.modal.obj
@@ -14,7 +10,7 @@ export default function Rolelist(props) {
 
     const DataContext = props.dataContext
 
-    const {dataListView, isLoading, uid, setUid} = useContext(DataContext);
+    const {dataListView, uid, setUid} = useContext(DataContext);
 
 
     const getTemplate = (data, column, cIndex) => {
@@ -91,8 +87,7 @@ export default function Rolelist(props) {
         try {
 
             const request = await PostApi('/Role/Delete',data);
-         console.log(request
-    )   
+       window.location.reload()
             if (request.status === 1) {
                
             } else {
@@ -125,7 +120,6 @@ export default function Rolelist(props) {
             if (config.events.edit) {
                 events.push(
                     <a
-                        
                         key={index}
                         className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                         onClick={() => setUid(data[config.events.edit.key])}
@@ -147,10 +141,6 @@ export default function Rolelist(props) {
             if (!config.events.delete) {
                 events.push(
                     <a 
-                    // config={AddRuleButtonConfig}
-                    // onClick={() => {
-                    //     history.replace("/role/add")
-                    // }}
                     onClick={() => deleteItem(data,config.events.delete)}
                         key={index}
                         className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
@@ -203,18 +193,10 @@ export default function Rolelist(props) {
                                         })
                                     }
                                     {
-                                        isEventsAvailable() && <td className="text-end">
+                                        isEventsAvailable() && <td key={dIndex} className="text-end">
 
                                             {  getEvents(data)}
-                                            {/* {
-                                                getEvents(data).map((item, index) => {
-                                                    return(
-                                                        <div key={config.columns.length + index + 1}>
-                                                            {item}
-                                                        </div>
-                                                    )
-                                                })
-                                            } */}
+                                           
 
                                             
                                         </td>
