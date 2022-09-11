@@ -1,7 +1,6 @@
 import { GetDataApi } from '../../managers/HttpManager';
 import Pagination from '../../components/paging/Pagination';
 import React, { useEffect, useState, createContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
 // components
 import TableList2 from '../../components/tableList/TableList2';
@@ -38,7 +37,6 @@ export const DataContext = createContext({
 
 
 export default function Countries() {
-    const history = useHistory();
 
     const pageList = 6;
     const { showMessage } = useToast();
@@ -116,7 +114,7 @@ export default function Countries() {
         <DataContext.Provider value={value}>
             <div className="post d-flex flex-column-fluid" id="kt_post">
                 <div id="kt_content_container" className="container ">
-                    <div className="card mb-5 mb-xl-8 w-100">
+                    <div className="border border-2 border border-secondary card mb-5 mb-xl-8 w-100">
                         <div className="card mb-5 mb-xl-8">
                             <div className="card-header border-0 pt-5">
                                 <div className="card-title">

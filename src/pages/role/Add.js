@@ -42,7 +42,6 @@ export default function AddRule() {
     const [description, setDescription] = useState("");
     const [loadPanelVisible, setLoadPanelVisible] = useState(false);
 
-
     async function postRule(e) {
         try {
 
@@ -67,7 +66,8 @@ export default function AddRule() {
                 setLoadPanelVisible(false)
                 showMessage(true, getStatusMessage(data.status), 'success');
 
-                history.replace('/roles')
+                history.replace('/en/Roles')
+                window.location.reload()
             } else {
                 setLoadPanelVisible(false)
                 showMessage(true, getStatusMessage(data.status), 'error');

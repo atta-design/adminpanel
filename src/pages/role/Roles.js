@@ -35,7 +35,6 @@ export const DataContext = createContext({
 function Roles2() {
   const reduxdata = useSelector((state) => state.getData.roleRequest);
   const history = useHistory();
-
   const dispatch = useDispatch();
   const pageList =5;
   const { showMessage } = useToast();
@@ -60,7 +59,7 @@ function Roles2() {
   };
 
   async function getLoadData(e) {
-    dispatch(fetchRoledata(`/Role/List`));
+    dispatch(fetchRoledata(`/Role/List?From=${0}&Count=${pageList}`));
     try {
       if (reduxdata.length !== 0) {
         if (reduxdata.status === 1) {
@@ -84,24 +83,27 @@ function Roles2() {
 
   return (
     <DataContext.Provider value={value}>
-   {isLoading?<Loading/>:   <div className="post d-flex flex-column-fluid" id="kt_post">
-        <div id="kt_content_container" className="container">
-          <div className="card mb-5 mb-xl-8">
+   {isLoading?<Loading/>:   <div className=" post d-flex flex-column-fluid" >
+        <div id="  kt_content_container" >
+          <div className="border border-2 border border-secondary card mx-3 mb-5 mb-xl-8">
             <div className="card mb-5 mb-xl-8">
-              <div className="card-header border-50 pt-5">
+              <div className="card-header border-0 pt-5">
                 <h3 className="card-title align-items-start flex-column">
-                  <span className="card-label fw-bolder fs-3 mb-1">
+                  <span className="card-label fw-bolder fs-1 mb-1">
                     لیست نقش ها
                   </span>
                 </h3>
-                <div className="card-toolbar"></div>
-              </div>
+               
+              </div> 
+              <div className="card-toolbar">
+                <div className="d-flex justify-content-end px-10">
               <Button 
                                     config={AddRuleButtonConfig}
                                     onClick={() => {
                                         history.replace("/role/add")
                                     }}
-                                />
+                                /></div>
+                                </div>
               <div className="card-body py-3">
                 {reduxdata.length !== 0 && (
                   <div>

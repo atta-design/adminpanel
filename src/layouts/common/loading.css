@@ -9,7 +9,6 @@
         -ms-flex-pack: center;
             justify-content: center;
     min-height: 100vh;
-    background-color: #edededd7;
   }
   
   .loader {

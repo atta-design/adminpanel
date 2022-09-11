@@ -15,7 +15,6 @@ let history = useHistory();
         selectValue = 'fa';
     }
 
-     console.log(selectValue)
     return (
         <>
             <div className="d-flex align-items-stretch flex-shrink-0">

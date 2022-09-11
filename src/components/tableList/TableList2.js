@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { PostApi, GetDataApi } from "../../managers/HttpManager";
+import {  GetDataApi } from "../../managers/HttpManager";
 
 // layouts
 import Loading from "../../layouts/common/Spinner";
@@ -8,7 +8,6 @@ import Loading from "../../layouts/common/Spinner";
 import { useToast } from "../../utils/toast/useToast";
 import getStatusMessage from "../../utils/statusHandler";
 import "./style.css";
-const Swal = require("sweetalert2");
 
 export default function TableList2(props) {
   const config = props.config;
@@ -31,8 +30,9 @@ export default function TableList2(props) {
     uid,
     setUid,
   } = useContext(DataContext);
-
+  
   async function getSortedData(sort) {
+
     try {
       setSortValue(sort);
       setIsLoading(true);
@@ -54,11 +54,16 @@ export default function TableList2(props) {
         setIsLoading(false);
         showMessage(true, getStatusMessage(data.status), "error");
       }
+
     } catch (e) {
       setIsLoading(false);
       showMessage(true, "خطایی در واکشی داده رخ داده است", "error");
     }
+   
+
   }
+  
+ 
 
   const useSortableData = (config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -96,82 +101,7 @@ export default function TableList2(props) {
   };
   const { requestSort } = useSortableData();
 
-  async function swalFire(data) {
-    try {
-      const request = await PostApi("/Country/Delete", data);
-      window.location.reload();
-      if (request.status === 1) {
-      } else {
-      }
-    } catch (e) {}
-
-    //     try {
-
-    //         const request = await PostApi('/Country/Delete',data);
-    //   window.location.reload()
-    //         if (request.status === 1) {
-    //             // setLoadPanelVisible(false)
-    //             // showMessage(true, getStatusMessage(data.status), 'success');
-
-    //         } else {
-    //             // setLoadPanelVisible(false)
-    //             // showMessage(true, getStatusMessage(data.status), 'error');
-    //         }
-    //     }
-    //     catch (e) {
-    //         // showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
-    //     }
-    //     // const swalWithBootstrapButtons = Swal.mixin({
-    //     //     customClass: {
-    //     //         cancelButton: 'btn btn-danger',
-    //     //         confirmButton: 'btn btn-success',
-    //     //     },
-    //     //     buttonsStyling: false
-    //     // });
-    //     // Swal.fire({
-    //     //     icon: 'warning',
-    //     //     title: 'آیا از حذف کشور اطمینان دارید؟',
-    //     //     text: "شما نمی توانید این را برگردانید!",
-    //     //     showCancelButton: true,
-    //     //     confirmButtonColor: '#3085d6',
-    //     //     cancelButtonColor: '#d33',
-    //     //     confirmButtonText: 'آره حذف کن',
-    //     //     cancelButtonText: `نه حذف نکن`,
-    //     //     customClass:{
-    //     //         icon: 'icon-swal'
-    //     //     },
-    //     //     preConfirm: async () => {
-    //     //         try {
-
-    //     //             const request = await PostApi('/Country/Delete',data);
-    //     //             console.log(request)
-    //     //             if (request.status !== 1) {
-    //     //                 Swal.showValidationMessage(
-    //     //                     `عملیات ناموفق بود`
-    //     //                 )
-    //     //                 const con = await GetDataApi('/Country/List');
-    //     //             console.log( con
-    //     //                 )
-    //     //             }else{
-    //     //                 // getLoadData()
-
-    //     //             }
-    //     //         }
-    //     //         catch (e) {
-    //     //             throw new Error('خطایی در واکشی داده رخ داده است')
-    //     //         }
-    //     //     }
-    //     // }).then((result) => {
-    //     //     if (result.isConfirmed) {
-    //     //         swalWithBootstrapButtons.fire(
-    //     //             'حذف شد!',
-    //     //             'نقش باموفقیت حذف شد.',
-    //     //             'success'
-    //     //         )
-    //     //     }
-    //     // });
-  }
-
+  
   const getTemplate = (data, column, cIndex) => {
     if (typeof column.template === "function") {
       return column.template(getValue(column, data));
@@ -237,6 +167,7 @@ export default function TableList2(props) {
   };
 
   const getValue = (column, data) => {
+    
     if (typeof column.calculateCellValue === "function") {
       return column.calculateCellValue(data[column.dataField]);
     }
@@ -304,7 +235,7 @@ export default function TableList2(props) {
       if (config.events.delete) {
         events.push(
           <a
-            onClick={() => swalFire(data, config.events.delete)}
+          href="##"
             key={index}
             className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
           >
@@ -362,7 +293,6 @@ export default function TableList2(props) {
         </thead>
         <tbody>
           {[...dataListView.entries()].map(([dIndex, data]) => {
-            console.log(data);
             return (
               <tr key={dIndex}>
                 {config.columns.map((column, cIndex) => {

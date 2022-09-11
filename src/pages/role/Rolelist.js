@@ -1,6 +1,7 @@
 import {useContext } from 'react';
 import { PostApi } from '../../managers/HttpManager';
 
+const Swal = require("sweetalert2");
 
 export default function Rolelist(props) {
 
@@ -33,7 +34,7 @@ export default function Rolelist(props) {
                 <td key={cIndex}>
                     <div className="d-flex align-items-center">
                         <div className="symbol symbol-50px me-5">
-                            <span className="bullet h-60px bg-primary"></span>
+                            <span className="bullet bullet-vertical h-40px bg-success"></span>
                         </div>
                         <div className="d-flex justify-content-start flex-column">
                             {getTemplate(data, column, cIndex)}
@@ -84,18 +85,51 @@ export default function Rolelist(props) {
         }
     }
     async function deleteItem(data) {
-        try {
+    console.log(data)
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                cancelButton: 'btn btn-danger',
+                confirmButton: 'btn btn-success',
+            },
+            buttonsStyling: false
+        });
+        Swal.fire({
+            icon: 'warning',
+            title: 'آیا از حذف کشور اطمینان دارید؟',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله',
+            cancelButtonText: `لغو عملیات حدف`,
+            customClass:{
+                icon: 'icon-swal'
+            },
+            preConfirm: async () => {
+                try {
 
-            const request = await PostApi('/Role/Delete',data);
-       window.location.reload()
-            if (request.status === 1) {
-               
-            } else {
-               
+                    const request = await PostApi('/Role/Delete',data);
+                    if (request.status !== 0) {
+                        Swal.showValidationMessage(
+                            `عملیات ناموفق بود`
+                        )
+                        
+                    }else{
+                        window.location.reload()
+                    }
+                }
+                catch (e) {
+                    throw new Error('خطایی در واکشی داده رخ داده است')
+                }
             }
-        }
-        catch (e) {
-        }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'حذف شد!',
+                    'نقش باموفقیت حذف شد.',
+                    'success'
+                )
+            }
+        });
     }
     const getValue = (column, data) => {
       
@@ -169,9 +203,9 @@ export default function Rolelist(props) {
     return (
       
         <div className="table-responsive">
-            <table className="table align-middle gs-0 gy-8">
+            <table className="table align-middle gs-0 gy-4">
                 <thead>
-                    <tr className="fw-bolder text-information  bg-secondary">
+                    <tr className="fw-bolder text-muted  bg-light">
                     {
                             config.columns.map((column, cIndex) => {
                                 return(

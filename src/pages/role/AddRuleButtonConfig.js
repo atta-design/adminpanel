@@ -8,15 +8,15 @@ export const ButtonConfig = {
             onOptionChanged: null,
         },
         id: "user-refresh-button",
-        icon: "", // Default Value: ''
-        text: "نقش جدید", // Type: String
-        accessKey: undefined, // Type: String
-        className: "btn-primary", // Type: String
-        hint: undefined, // Default Value: undefined Type: string
-        width: undefined, // Default Value: undefined Type: string number func
-        height: undefined, // Default Value: undefined Type: string number func
-        stylingMode: 'contained', // Accepted Values: 'text' | 'outlined' | 'contained'
-        type: 'success', // Accepted Values: 'back' | 'danger' | 'default' | 'normal' | 'success'
+        icon: "", 
+        text: "نقش جدید", 
+        accessKey: undefined, 
+        className: "btn-primary", 
+        hint: undefined, 
+        width: undefined, 
+        height: undefined,
+        stylingMode: 'contained',
+        type: 'success', 
         visible: true,
         disabled: false,
         rtlEnabled: false,
@@ -24,7 +24,7 @@ export const ButtonConfig = {
         hoverStateEnabled: true,
         focusStateEnabled: true,
         activeStateEnabled: false,
-        tabIndex: 0, // Default Value: 0
+        tabIndex: 0, 
         elementAttr: {
             style: {
                 "font-weight": "bold",

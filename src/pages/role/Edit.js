@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { GetDataApi, PostApi } from '../../managers/HttpManager';
-import { fetchdata } from '../../redux/reducers/getDataReducer';
-import { useDispatch, useSelector } from "react-redux";
 // components
 import Chips from '../../components/chips/Chips';
 import TextBoxComponent from '../../components/textBox/TextBox';
