@@ -57,9 +57,9 @@ export default function Rolelist(props) {
             return(item.className)
         } else {
             if (index === 0) {
-                return("ps-4 min-w-300px rounded-start")
+                return("ps-4 w-100-px rounded-start")
             }
-            return("min-w-200px")
+            return("w-200px")
         } 
     }
 
@@ -79,65 +79,14 @@ export default function Rolelist(props) {
         }
         return false
     }
-    const checkEventsAvailable = (cIndex) => {
-        if (isEventsAvailable()) {
-            return(<th key={cIndex} className="min-w-200px">عملیات</th>)
-        }
-    }
-    async function deleteItem(data) {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                cancelButton: 'btn btn-danger',
-                confirmButton: 'btn btn-success',
-            },
-            buttonsStyling: false
-        });
-        Swal.fire({
-            icon: 'warning',
-            title: 'آیا از حذف کشور اطمینان دارید؟',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'بله',
-            cancelButtonText: `لغو عملیات حدف`,
-            customClass:{
-                icon: 'icon-swal'
-            },
-            preConfirm: async () => {
-                try {
-
-                    const request = await PostApi('/Role/Delete',data);
-                    if (request.status !== 0) {
-                        Swal.showValidationMessage(
-                            `عملیات ناموفق بود`
-                        )
-                        
-                    }else{
-                        window.location.reload()
-                    }
-                }
-                catch (e) {
-                    throw new Error('خطایی در واکشی داده رخ داده است')
-                }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                    'حذف شد!',
-                    'نقش باموفقیت حذف شد.',
-                    'success'
-                )
-            }
-        });
-    }
+    
     const getValue = (column, data) => {
-      
         if (typeof column.calculateCellValue === 'function') {
             return column.calculateCellValue(data[column.dataField])
         }
         if (typeof column.lookup === 'object') {
             try {
-                return data.description
+                return data.firstname
                
             } catch {
                 return ''
@@ -171,27 +120,7 @@ export default function Rolelist(props) {
                     </a>
                 )
             }
-            if (!config.events.delete) {
-                events.push(
-                    <a 
-                    onClick={() => deleteItem(data,config.events.delete)}
-                        key={index}
-                        className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                      
-                    >
-                      
-                        <span className="svg-icon svg-icon-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" fill="none" >
-                                    <rect x="0" y="0" width="24" height="24"></rect>
-                                    <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" ></path>
-                                    <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
-                                </g>
-                            </svg>
-                        </span>
-                    </a>
-                )
-            }
+           
             return events
         } else {
             return events
@@ -201,10 +130,10 @@ export default function Rolelist(props) {
     
     return (
       
-        <div className="table-responsive">
-            <table className="table align-middle gs-0 gy-4">
+        <div className="w-100 table-responsive">
+            <table className="w-100 table align-middle gs-0 gy-4">
                 <thead>
-                    <tr className="fw-bolder text-muted  bg-light">
+                    <tr className="w-100 fw-bolder text-muted  bg-light">
                     {
                             config.columns.map((column, cIndex) => {
                                 return(
@@ -212,7 +141,6 @@ export default function Rolelist(props) {
                                 )
                             })
                         }
-                        {checkEventsAvailable(config.columns.length + 1)}
                     </tr>
                 </thead>
                 <tbody>
@@ -226,7 +154,7 @@ export default function Rolelist(props) {
                                         })
                                     }
                                     {
-                                        isEventsAvailable() && <td key={dIndex} className="text-end">
+                                        isEventsAvailable() && <td key={dIndex} className="w-100 text-end">
 
                                             {  getEvents(data)}
                                            

@@ -7,7 +7,7 @@ const getDataSlice = createSlice({
   name: "getData",
   initialState: {
     roleRequest: [],
-    newsRequest: [],
+   userRequest: [],
     MaindataRequest:[]
   },
 
@@ -16,8 +16,8 @@ const getDataSlice = createSlice({
     rolesReceived(state, action) {
       state.roleRequest = action.payload;
     },
-    newsReceived(state, action) {
-      state.newsRequest = action.payload;
+    usersReceived(state, action) {
+      state.userRequest = action.payload;
     },
    MainReceived(state, action) {
       state.MaindataRequest = action.payload;
@@ -25,7 +25,7 @@ const getDataSlice = createSlice({
   },
 });
 
-export const {  rolesReceived, newsReceived,MainReceived } =
+export const {  rolesReceived, usersReceived,MainReceived } =
   getDataSlice.actions;
 async function getCookie() {
   let retVal = Cookies.get("authtoken");
@@ -54,10 +54,10 @@ export const fetchRoledata = (url) => async (dispatch) => {
 };
 
 
-export const fetchNewsdata = (url) => async (dispatch) => {
+export const fetchusersdata = (url) => async (dispatch) => {
   const response = await axios.get(baseURL + url, await getRequestOptions());
 
-  dispatch(newsReceived(await response.data));
+  dispatch(usersReceived(await response.data));
 };
 
 

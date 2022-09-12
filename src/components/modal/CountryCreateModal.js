@@ -5,7 +5,7 @@ import { PostApi } from '../../managers/HttpManager';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import ProgressBar from 'devextreme-react/progress-bar';
 import  ClassicEditor  from '@ckeditor/ckeditor5-build-classic';
-
+import {useLocation } from 'react-router-dom'
 // components
 import TextBoxComponent from '../textBox/TextBox';
 import { default as Button } from '../button/Button';
@@ -27,7 +27,9 @@ import '../ckEditor/styles.css'
 
 
 export default function CountryCreateModal(props) {
-
+    const location = useLocation();
+ 
+    const path=location.pathname.slice(4)
 	const titleModal = props.title
 
 	const { showMessage } = useToast();
@@ -178,7 +180,6 @@ export default function CountryCreateModal(props) {
     }, []);
 
     async function postCountry(e) {
-        console.log('create')
         try {
 
             setLoadPanelVisible(true)
@@ -192,8 +193,7 @@ export default function CountryCreateModal(props) {
                 "thumbnail": thumbnailSource,
                 "popularCondiments": popularCondiments,
             };
-
-            const data = await PostApi('/country/add', postOjb);
+            const data = await PostApi(`/${path}/add`, postOjb);
 
             if (data.status === 1) {
                 setLoadPanelVisible(false)

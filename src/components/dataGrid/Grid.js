@@ -143,7 +143,7 @@ const Grid = (props) => {
                     defaultPageSize={config.settings.paging.defaultPageSize}
                     defaultPageIndex={config.settings.paging.defaultPageIndex}
                 />
-                <Toolbar>
+                {/* <Toolbar>
                     <Item
                         name="groupPanel"
                         visible={config.toolbarItems.groupPanel}
@@ -208,8 +208,8 @@ const Grid = (props) => {
                         endsWith={config.FilterRow.OperationDescriptions.endsWith}
                         startsWith={config.FilterRow.OperationDescriptions.startsWith}
                     />
-                </FilterRow>
-                <Editing
+                </FilterRow> */}
+                {/* <Editing
                     mode={config.Editing.mode}
                     allowAdding={config.Editing.allowAdding}
                     allowUpdating={config.Editing.allowUpdating}
@@ -258,7 +258,7 @@ const Grid = (props) => {
                     title={config.ColumnChooser.title}
                     enabled={config.ColumnChooser.enabled}
                     emptyPanelText={config.ColumnChooser.emptyPanelText}
-                />
+                /> */}
                 {props.children && props.children}
                 {
                     config.templates && config.templates.map((item, index) => {

@@ -61,7 +61,6 @@ async function PostApi(url, postData, contenttype) {
 
   try {
     var obj = await postRequestOptions(contenttype);
-    console.log(obj);
     obj.body = JSON.stringify(postData);
 
     const response = await fetch(baseURL + url, obj);
@@ -83,7 +82,6 @@ async function axiosPut(url, postData,) {
   const retval = { status: 0, content: null };
 
   const { data } = await axios.patch(baseURL + url, postData).catch((error) => {
-    console.log(error);
   });
   retval.status = data.status;
   if (data.status === 1) {
@@ -96,7 +94,6 @@ async function axiosPost(url, postData, contenttype) {
   const retval = { status: 0, content: null };
 
   const { data } = await axios.post(baseURL + url, postData).catch((error) => {
-    console.log(error);
   });
   retval.status = data.status;
   if (data.status === 1) {

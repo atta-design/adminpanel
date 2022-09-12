@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import {  GetDataApi } from "../../managers/HttpManager";
+import {useLocation } from 'react-router-dom'
 
 // layouts
 import Loading from "../../layouts/common/Spinner";
@@ -14,7 +15,9 @@ export default function TableList2(props) {
   const Modal = props.modal.obj;
   const modalTitle = props.modal.title;
   const DataContext = props.dataContext;
-
+ const location = useLocation();
+ 
+  const path=location.pathname.slice(4)
   const { showMessage } = useToast();
 
   const {
@@ -37,7 +40,7 @@ export default function TableList2(props) {
       setSortValue(sort);
       setIsLoading(true);
 
-      let url = `/country/list?From=${0}&Count=${6}&Search=${searchValue}`;
+      let url = `/${path}/list?From=${0}&Count=${6}&Search=${searchValue}`;
       if (filterStatusValue) {
         url += `&Status=${filterStatusValue}`;
       }

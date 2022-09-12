@@ -1,4 +1,3 @@
-import { employees } from './employees';
 
 import saveAs from 'file-saver';
 import { Workbook } from 'exceljs';
@@ -73,7 +72,7 @@ export const GridConfig = {
         rtlEnabled: false,
         showBorders: true,
         wordWrapEnabled: false,
-        dataSource: employees,
+        // dataSource: employees,
         columnAutoWidth: true,
         onExporting: exportGrid,
         allowColumnReordering: true,

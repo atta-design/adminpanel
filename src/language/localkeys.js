@@ -121,7 +121,7 @@ export const LocalKeys = [
     localkey_lang: {
       fa: "ملت ها",
       ar: "منتجات",
-      en: "Nations",
+      en: "Country",
     },
   },
   {

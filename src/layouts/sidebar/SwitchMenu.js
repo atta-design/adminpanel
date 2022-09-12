@@ -6,7 +6,8 @@ import Roles from '../../pages/role/Roles'
 import AddRole from '../../pages/role/Add';
 import EditRole from '../../pages/role/Edit';
 import CountryCreateModal from '../../components/modal/CountryCreateModal';
-
+import Users from '../../pages/user/Users';
+import Provinces from '../../pages/province/provinceList'
 
 function SwitchMenu(){
     const {t}= useTranslation()
@@ -28,11 +29,15 @@ function SwitchMenu(){
     <Redirect to={language} />
 </Route>
            
-            <Route path={'/'+language +'/Nations'} component={Countries} />
+            <Route path={'/'+language +'/Country'} component={Countries} />
             <Route path={'/'+language +'/Roles'} component={Roles} />
+            <Route path={'/'+language +'/Users'} component={Users} />
+            <Route path={'/'+language +'/Province'} component={Provinces} />
+
             <Route path="/role/add" component={AddRole} />
             <Route path="/role/Edit" component={EditRole} />
             <Route path="/Nations/add" component={CountryCreateModal} />
+           
 
         </Switch>
     )

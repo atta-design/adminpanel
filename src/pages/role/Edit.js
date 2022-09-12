@@ -52,7 +52,6 @@ export default function Edit() {
 
                 setLoadPanelVisible(true);
                 const data = await GetDataApi('/role/item?uid=' + uid);
-console.log(data)
                 if (data.status === 1) {
                     setAdd(data.content.add);
                     setEdit(data.content.edit);

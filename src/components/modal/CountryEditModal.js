@@ -6,6 +6,7 @@ import { LoadPanel } from "devextreme-react/load-panel";
 import ProgressBar from "devextreme-react/progress-bar";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { GetDataApi, PostApi } from "../../managers/HttpManager";
+import {useLocation } from 'react-router-dom'
 
 // components
 import TextBoxComponent from "../textBox/TextBox";
@@ -23,6 +24,9 @@ import { FileUploaderConfig as ThumbnailDropZone } from "./configs/country/thumb
 import "./styles/dropZone.css";
 
 export default function CountryEditModal(props) {
+  const location = useLocation();
+ 
+  const path=location.pathname.slice(4)
   const uid = props.uid;
   const titleModal = props.title;
 
@@ -173,7 +177,7 @@ export default function CountryEditModal(props) {
       try {
         if (uid) {
           setLoadPanelVisible(true);
-          const data = await GetDataApi("/country/item?uid=" + uid);
+          const data = await GetDataApi(`/${path}/item?uid=` + uid);
 
           if (data.status === 1) {
             setcountryUID(data.content.countryUID);
@@ -222,8 +226,7 @@ export default function CountryEditModal(props) {
         imageUID: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       };
 
-      const data = await PostApi("/country/Edit", postOjb);
-
+      const data = await PostApi(`/${path}/Edit`, postOjb);
       if (data.status === 1) {
         setLoadPanelVisible(false);
         window.location.reload();
