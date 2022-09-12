@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="286ffedd-26d2-4ac3-b350-8a48e8428642" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/list/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/list/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/CountryCreateModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/CountryCreateModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tableList/TableList2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tableList/TableList2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/entities.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/language/i18next.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/language/i18next.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/sidebar/AccordionMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/sidebar/AccordionMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/sidebar/SwitchMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/sidebar/SwitchMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/topbar/Topbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/topbar/Topbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.js" afterDir="false" />
-    </list>
+    <list default="true" id="286ffedd-26d2-4ac3-b350-8a48e8428642" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +37,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662464251064</updated>
       <workItem from="1662464252762" duration="361000" />
+      <workItem from="1662902036270" duration="631000" />
     </task>
     <servers />
   </component>
