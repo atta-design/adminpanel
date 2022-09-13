@@ -52,7 +52,7 @@ useEffect(()=>{
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
+                    <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.ar)}</span>
                     <span className="menu-arrow"></span>
                   </span>
                   {userModule.subMenu.map((user) =>
@@ -68,7 +68,7 @@ useEffect(()=>{
                               <span className="menu-bullet">
                                 <span className="bullet bullet-dot"></span>
                               </span>
-                              <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
+                              <span className="menu-title">{language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.ar)}</span>
                             </Link>
                           </div>
                         </div>
@@ -100,7 +100,7 @@ useEffect(()=>{
                         </svg>
                       </span>
                     </span>
-                    <span className="menu-title"> {language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.en)}</span>
+                    <span className="menu-title"> {language==='en'? Module.localkey_lang.en :(language==='fa'? Module.localkey_lang.fa:Module.localkey_lang.ar)}</span>
                   </Link>
                 </div>
               )

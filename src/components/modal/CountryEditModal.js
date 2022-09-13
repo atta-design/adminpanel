@@ -7,7 +7,7 @@ import ProgressBar from "devextreme-react/progress-bar";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { GetDataApi, PostApi } from "../../managers/HttpManager";
 import {useLocation } from 'react-router-dom'
-
+import { useTranslation } from 'react-i18next';
 // components
 import TextBoxComponent from "../textBox/TextBox";
 
@@ -25,7 +25,7 @@ import "./styles/dropZone.css";
 
 export default function CountryEditModal(props) {
   const location = useLocation();
- 
+  const {t}= useTranslation()
   const path=location.pathname.slice(4)
   const uid = props.uid;
   const titleModal = props.title;
@@ -268,7 +268,7 @@ export default function CountryEditModal(props) {
                     <div className="row mb-3">
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
-                          <label className="fs-5 fw-bold mb-2">عنوان</label>
+                          <label className="fs-5 fw-bold mb-2">{t('title')}</label>
                           {title != null && (
                             <TextBoxComponent
                               config={TitleTextBoxConfig}
@@ -283,7 +283,7 @@ export default function CountryEditModal(props) {
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
                           <label className="fs-5 fw-bold mb-2">
-                            فرهنگ غذایی
+                          {t('foodCulture')}
                           </label>
                           {foodCulture != null && (
                             <CKEditor
@@ -316,7 +316,7 @@ export default function CountryEditModal(props) {
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
                           <label className="fs-6 fw-bold mb-2">
-                            چاشنی های محبوب
+                          {t('PopularCondiments')}
                           </label>
                           {popularCondiments != null && (
                             <CKEditor
@@ -348,7 +348,7 @@ export default function CountryEditModal(props) {
                       <div className="separator separator-dashed my-6"></div>
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
-                          <label className="fs-6 fw-bold mb-2">سنت</label>
+                          <label className="fs-6 fw-bold mb-2">{t('tradition')}</label>
                           {tradition != null && (
                             <CKEditor
                               config={{
@@ -380,7 +380,7 @@ export default function CountryEditModal(props) {
                       <div className="col-md-18">
                         <div className="row mb-5">
                           <div className="col-md-6 fv-row">
-                            <label className="fs-6 fw-bold mb-2">عکس</label>
+                            <label className="fs-6 fw-bold mb-2">{t('picture')}</label>
                             <div
                               id="image-dropzone-external"
                               className={`drop-zone flex-box ${
@@ -478,7 +478,8 @@ export default function CountryEditModal(props) {
                   </div>
                   <div className="card-footer d-flex justify-content-end py-6 px-9">
                     <button className="btn btn-primary" type="submit">
-                      ذخیره
+                    {t('save')}
+
                     </button>
                     <LoadPanel
                       shading={true}

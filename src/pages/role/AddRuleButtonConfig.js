@@ -1,3 +1,6 @@
+
+
+
 export const ButtonConfig = {
     'settings': {
         'methods': {
@@ -9,7 +12,7 @@ export const ButtonConfig = {
         },
         id: "user-refresh-button",
         icon: "", 
-        text: "نقش جدید", 
+        text: localStorage.getItem('lng')==='en'?'Add new role':(localStorage.getItem('lng')==='fa'?'افزودن نفش جدید':'اضف دورا جدیدا') ,
         accessKey: undefined, 
         className: "btn-primary", 
         hint: undefined, 

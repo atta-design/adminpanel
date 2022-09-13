@@ -7,6 +7,7 @@ let history = useHistory();
         i18n.changeLanguage(e)
         localStorage.setItem("lng",e)
         history.push("/"+e);
+        window.location.reload()
        
     }
         var selectValue = localStorage.getItem('lng');

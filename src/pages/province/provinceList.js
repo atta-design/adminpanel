@@ -1,6 +1,7 @@
 import { GetDataApi } from '../../managers/HttpManager';
 import Pagination from '../../components/paging/Pagination';
 import React, { useEffect, useState, createContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // components
 import TableList2 from '../../components/tableList/TableList2';
@@ -37,6 +38,7 @@ export const DataContext = createContext({
 
 
 export default function Provinces() {
+    const{t}=useTranslation()
 
     const pageList = 6;
     const { showMessage } = useToast();
@@ -119,7 +121,7 @@ export default function Provinces() {
                             <div className="card-header border-0 pt-5">
                                 <div className="card-title">
                                     <h3 className="align-items-start">
-                                        <span className="card-label fw-bolder fs-3 mb-1">لیست استان ها</span>
+                                        <span className="card-label fw-bolder fs-3 mb-1"> {t('ProvinceList')}</span>
                                     </h3>
                                     <div className="d-flex align-items-center position-relative my-1">
                                         <span className="svg-icon svg-icon-1 position-absolute ms-6">
@@ -134,7 +136,7 @@ export default function Provinces() {
                                         <input
                                             type="text"
                                             className="form-control form-control-solid w-250px ps-15"
-                                            placeholder="جستجو"
+                                            placeholder={t('search')}
                                             onChange={(e) => handleSearch(e.target.value)}
                                         />
                                     </div>
@@ -147,7 +149,7 @@ export default function Provinces() {
                                                 <path fillRule="evenodd" clipRule="evenodd" d="M12 17C12.5523 17 13 16.5523 13 16V13H16C16.5523 13 17 12.5523 17 12C17 11.4477 16.5523 11 16 11H13V8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8V11H8C7.44772 11 7 11.4477 7 12C7 12.5523 7.44771 13 8 13H11V16C11 16.5523 11.4477 17 12 17Z" fill="#12131A" />
                                             </svg>
                                         </span>
-                                        افزودن استان
+                                        {t('addProvince')}
                                     </button>
                                     <SelectBox
                                         config={Event}
@@ -157,11 +159,11 @@ export default function Provinces() {
                             </div>
 
                             <div className="card-body py-3 w-100">
-                                {isLoading?<Loading/>:(<div> <TableList2 config={TableListConfig} pageURL={'Province/list'} dataContext={DataContext} modal={{obj:CountryEditModal, title:'ویرایش اطلاعات استان'}} />
+                                {isLoading?<Loading/>:(<div> <TableList2 config={TableListConfig} pageURL={'Province/list'} dataContext={DataContext} modal={{obj:CountryEditModal, title:t('provinceEdit')}} />
                                 <Pagination dataCount={dataCount} pageList={pageList} pageURL={'Province/list'} dataContext={DataContext}/></div>)}
                                
                             </div>
-                            <CountryCreateModal title={'افزودن استان'}/>
+                            <CountryCreateModal title={t('addProvince')}/>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ export const LocalKeys = [
     LocalKey: "recipe_module",
     localkey_lang: {
       fa: "دستور پخت",
-      ar: "منتجات",
+      ar: "وصفات",
       en: "recipe",
     },
   },
@@ -30,7 +30,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "دانشنامه",
-      ar: "",
+      ar: "موسوعة",
       en: "encyclopedia",
     },
   },
@@ -39,7 +39,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "محتوا",
-      ar: "",
+      ar: "المحتوى",
       en: "content",
     },
   },
@@ -48,7 +48,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "اشتراک",
-      ar: "",
+      ar: "الاشتراك",
       en: "subscription",
     },
   },
@@ -57,7 +57,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "مدیریت سایت",
-      ar: "منتجات",
+      ar: "اداره الموقع",
       en: "site managment",
     },
   },
@@ -75,7 +75,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "مواد مورد نیاز",
-      ar: "",
+      ar: "المواد المطلوبه",
       en: "Raw Materials",
     },
   },
@@ -84,7 +84,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "دسته بندی غذاها",
-      ar: "",
+      ar: "تصنيف الأطعمة",
       en: "food Categories",
     },
   },
@@ -93,7 +93,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "نظرات",
-      ar: "",
+      ar: "تعليقات",
       en: "comments",
     },
   },
@@ -102,7 +102,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "تجهیزات",
-      ar: "منتجات",
+      ar: "معدات",
       en: "equipment",
     },
   },
@@ -111,7 +111,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "استان",
-      ar: "منتجات",
+      ar: "المقاطعات",
       en: "Province",
     },
   },
@@ -120,7 +120,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "ملت ها",
-      ar: "منتجات",
+      ar: "البلاد",
       en: "Country",
     },
   },
@@ -156,7 +156,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "وعده های غذایی",
-      ar: "",
+      ar: "منتجات",
       en: "Food Meals",
     },
   },
@@ -165,7 +165,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "مقالات",
-      ar: "",
+      ar: "منتجات",
       en: "َArticles",
     },
   },
@@ -174,7 +174,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "خبرنامه",
-      ar: "",
+      ar: "منتجات",
       en: "News Letter",
     },
   },
@@ -183,7 +183,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: " تماس با ما ",
-      ar: "",
+      ar: "منتجات",
       en: "Contact US",
     },
   },
@@ -192,7 +192,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "پرسش های متداول",
-      ar: "",
+      ar: "الاسئله الشائعه",
       en: "FAQ",
     },
   },
@@ -201,7 +201,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: "برنامه ها",
-      ar: "",
+      ar: "تخفيض",
       en: "Plans",
     },
   },
@@ -219,7 +219,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: " معاملات ",
-      ar: "",
+      ar: "المعاملات",
       en: "Transactions",
     },
   },
@@ -228,7 +228,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: " کاربران ",
-      ar: "",
+      ar: "المستخدمين",
       en: "Users",
     },
   },
@@ -237,7 +237,7 @@ export const LocalKeys = [
 
     localkey_lang: {
       fa: " نقش ها ",
-      ar: "",
+      ar: "الأدوار",
       en: "Roles",
     },
   },

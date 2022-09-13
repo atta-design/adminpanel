@@ -4,6 +4,9 @@ import getStatusMessage from "../../utils/statusHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../redux/reducers/postDataReducer";
 import Cookies from "js-cookie";
+import { useTranslation } from 'react-i18next';
+import { useHistory  } from 'react-router-dom'
+
 // component
 import ButtonComponent from "../../components/button/Button";
 import TextBoxComponent from "../../components/textBox/TextBox";
@@ -15,9 +18,27 @@ import Loading from '../../layouts/common/Loading'
 function Login() {
   const reduxdata = useSelector((state) => state.requests);
   const dispatch = useDispatch();
-
+  const {t,i18n }= useTranslation()
   const { showMessage } = useToast();
-
+  let history = useHistory();
+  const languagehandler=(e)=>{
+      i18n.changeLanguage(e)
+      localStorage.setItem("lng",e)
+      history.push("/"+e);
+      window.location.reload()
+     
+  }
+  
+  
+      var selectValue = localStorage.getItem('lng');
+      if(null === selectValue)
+  {
+      selectValue = 'fa';
+  }
+   let dir
+selectValue==='en'?dir="ltr":dir="rtl"
+   
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loadPanelVisible, setLoadPanelVisible] = useState(false);
@@ -54,7 +75,8 @@ function Login() {
 
 
   return (
-    <div> {loadPanelVisible ? < Loading/>:
+    <div dir={dir}
+    > {loadPanelVisible ? < Loading/>:
     <div className="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
 
       <a href="index.html" className="mb-12">
@@ -71,10 +93,10 @@ function Login() {
           id="kt_sign_in_form"
         >
           <div className="text-center mb-10">
-            <h1 className="text-dark mb-3">ورود به پرتال مدیریت</h1>
+            <h1 className="text-dark mb-3"> {t('enterToPanel')} </h1>
           </div>
           <div className="fv-row mb-10 fv-plugins-icon-container">
-            <label className="form-label fs-6 fw-bolder text-dark">ایمیل</label>
+            <label className="form-label fs-6 fw-bolder text-dark">{t('email')}</label>
             <TextBoxComponent
               config={EmailConfig}
               onValueChanged={(data) => setEmail(data.value)}
@@ -85,9 +107,9 @@ function Login() {
           <div className="fv-row mb-10 fv-plugins-icon-container">
             <div className="d-flex flex-stack mb-2">
               <label className="form-label fw-bolder text-dark fs-6 mb-0">
-                کلمه عبور
+              {t('password')}
               </label>
-              <a className="link-primary fs-6 fw-bolder">فراموشی رمز</a>
+              <a className="link-primary fs-6 fw-bolder"> {t('passwordForget')} </a>
             </div>
             <TextBoxComponent
               config={PasswordConfig}
@@ -96,10 +118,15 @@ function Login() {
             <div className="fv-plugins-message-container invalid-feedback"></div>
           </div>
           <div className="text-center">
-            <ButtonComponent config={SubmitConfig}></ButtonComponent>
+            <ButtonComponent value='ffff' config={SubmitConfig}></ButtonComponent>
           
           </div>
         </form>
+        <div>
+          <button type="button" className="btn btn-light" onClick={()=>languagehandler('en')}>English</button>
+          <button type="button" className="btn btn-light" onClick={()=>languagehandler('ar')}>عربی</button>
+          <button type="button" className="btn btn-light" onClick={()=>languagehandler('fa')}>فارسی</button>
+        </div>
       </div>
     </div>}</div>
   );

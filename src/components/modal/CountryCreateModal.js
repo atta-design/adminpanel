@@ -6,6 +6,7 @@ import { LoadPanel } from 'devextreme-react/load-panel';
 import ProgressBar from 'devextreme-react/progress-bar';
 import  ClassicEditor  from '@ckeditor/ckeditor5-build-classic';
 import {useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 // components
 import TextBoxComponent from '../textBox/TextBox';
 import { default as Button } from '../button/Button';
@@ -28,7 +29,8 @@ import '../ckEditor/styles.css'
 
 export default function CountryCreateModal(props) {
     const location = useLocation();
- 
+    const {t}= useTranslation()
+
     const path=location.pathname.slice(4)
 	const titleModal = props.title
 
@@ -192,6 +194,8 @@ export default function CountryCreateModal(props) {
                 "foodCulture": foodCulture,
                 "thumbnail": thumbnailSource,
                 "popularCondiments": popularCondiments,
+                'status':1
+
             };
             const data = await PostApi(`/${path}/add`, postOjb);
 
@@ -231,7 +235,7 @@ export default function CountryCreateModal(props) {
                                     <div className="row mb-3">
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-5 fw-bold mb-2">عنوان</label>
+                                                <label className="fs-5 fw-bold mb-2">{t('title')}</label>
                                                 {
                                                     <TextBoxComponent
                                                         config={TitleTextBoxConfig}
@@ -244,7 +248,7 @@ export default function CountryCreateModal(props) {
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-5 fw-bold mb-2">فرهنگ غذایی</label>
+                                                <label className="fs-5 fw-bold mb-2">{t('foodCulture')}</label>
                                                 {
                                                     <CKEditor
                                                         editor={ ClassicEditor }
@@ -263,7 +267,7 @@ export default function CountryCreateModal(props) {
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-6 fw-bold mb-2">چاشنی های محبوب</label>
+                                                <label className="fs-6 fw-bold mb-2">{t('PopularCondiments')}</label>
                                                 {
                                                     <CKEditor
                                                         editor={ ClassicEditor }
@@ -282,7 +286,7 @@ export default function CountryCreateModal(props) {
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-6 fw-bold mb-2">سنت</label>
+                                                <label className="fs-6 fw-bold mb-2">{t('tradition')}</label>
                                                 {
                                                     <CKEditor
                                                         editor={ ClassicEditor }
@@ -302,7 +306,7 @@ export default function CountryCreateModal(props) {
                                         <div className="col-md-18">
                                             <div className="row mb-5">
                                                 <div className="col-md-6 fv-row">
-                                                    <label className="fs-6 fw-bold mb-2">عکس</label>
+                                                    <label className="fs-6 fw-bold mb-2">{t('picture')}</label>
                                                     <div id="image-dropzone-external" className={`drop-zone flex-box ${isDropZoneImageActive ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
                                                         {imageSource && <img id="dropzone-image" src={imageSource} alt={imageAlt} />}
                                                         {imageTextVisible
@@ -365,7 +369,9 @@ export default function CountryCreateModal(props) {
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex justify-content-end py-6 px-9">
-                                    <Button config={SubmitButtonConfig} />
+                                <button className="btn btn-primary" type="submit">
+                      {t('save')}
+                    </button>
                                     <LoadPanel
                                         shading={true}
                                         showPane={true}

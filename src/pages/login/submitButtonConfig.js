@@ -1,5 +1,6 @@
+
 const onClick = () => {
-	return(
+    return(
 		function onClick(e) {
 			// your code
 		}
@@ -50,7 +51,7 @@ export const ButtonConfig = {
         },
         id: "submit-button",
         icon: "", // Default Value: ''
-        text: "ورود", // Type: String
+        text: localStorage.getItem('lng')==='en'?'Login':(localStorage.getItem('lng')==='fa'?'ورود':'تسجیل الدخول'),
         accessKey: undefined, // Type: String
         className: "btn btn-lg btn-primary w-100 mb-5", // Type: String
         hint: undefined, // Default Value: undefined Type: string

@@ -3,7 +3,7 @@ import Pagination from "../../components/paging/Pagination";
 import { ButtonConfig as AddRuleButtonConfig } from './AddRuleButtonConfig';
 import {default as Button} from '../../components/button/Button';
 import { useHistory } from 'react-router-dom';
-
+import { useTranslation } from "react-i18next";
 // components
 import Rolelist from "./Rolelist";
 //utiles
@@ -44,7 +44,7 @@ function Roles2() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [dataListView, setDataListView] = useState([]);
-
+const{t}=useTranslation()
   const value = {
     dataListView,
     setDataListView,
@@ -90,7 +90,7 @@ function Roles2() {
               <div className="card-header border-0 pt-5">
                 <h3 className="card-title align-items-start flex-column">
                   <span className="card-label fw-bolder fs-1 mb-1">
-                    لیست نقش ها
+                   {t('roleList')}
                   </span>
                 </h3>
                
@@ -98,6 +98,7 @@ function Roles2() {
               <div className="card-toolbar">
                 <div className="d-flex justify-content-end px-10">
               <Button 
+              
                                     config={AddRuleButtonConfig}
                                     onClick={() => {
                                         history.replace("/role/add")
@@ -111,7 +112,7 @@ function Roles2() {
                       <Rolelist
                       config={TableListConfig}
                       dataContext={DataContext}
-                      modal={{ obj: RoleEditModal, title: "ویرایش نقش" }}
+                      modal={{ obj: RoleEditModal, title: t('roleEdit')} }
                     />
                   
                   <Pagination

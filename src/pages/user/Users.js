@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createContext } from "react";
 import Pagination from "../../components/paging/Pagination";
-
-import { useHistory } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 import { GridConfig as UsersListConfig } from "./config";
 
 // components
@@ -32,8 +31,9 @@ export const DataContext = createContext({
 });
 
 function Roles2() {
+  const {t }= useTranslation()
+
   const reduxdata = useSelector((state) => state.getData.userRequest);
-  const history = useHistory();
   const dispatch = useDispatch();
   const pageList =5;
   const { showMessage } = useToast();
@@ -89,7 +89,7 @@ function Roles2() {
               <div className="card-header border-0 pt-5">
                 <h3 className="card-title align-items-start flex-column">
                   <span className="card-label fw-bolder fs-1 mb-1">
-                    لیست کاربران 
+                   {t('usersList')} 
                   </span>
                 </h3>
                

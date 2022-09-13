@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import {  GetDataApi } from "../../managers/HttpManager";
-import {useLocation } from 'react-router-dom'
-
+import {useLocation } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 // layouts
 import Loading from "../../layouts/common/Spinner";
 
@@ -11,14 +11,16 @@ import getStatusMessage from "../../utils/statusHandler";
 import "./style.css";
 
 export default function TableList2(props) {
+
   const config = props.config;
   const Modal = props.modal.obj;
   const modalTitle = props.modal.title;
   const DataContext = props.dataContext;
  const location = useLocation();
- 
   const path=location.pathname.slice(4)
   const { showMessage } = useToast();
+  const {t}= useTranslation()
+
 
   const {
     dataListView,
@@ -194,7 +196,7 @@ export default function TableList2(props) {
     if (isEventsAvailable()) {
       return (
         <th key={cIndex} className="min-w-50px sorting sorting_asc">
-          عملیات
+          {(t('operation'))}
         </th>
       );
     }

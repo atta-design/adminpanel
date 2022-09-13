@@ -50,7 +50,7 @@ export const ButtonConfig = {
         },
         id: "button",
         icon: "", // Default Value: ''
-        text: "", // Type: String
+        // text: "", // Type: String
         accessKey: undefined, // Type: String
         className: undefined, // Type: String
         hint: undefined, // Default Value: undefined Type: string
