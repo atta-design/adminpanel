@@ -152,8 +152,8 @@ export default function Rolelist(props) {
         if (isEventsAvailable()) {
             if (config.events.edit) {
                 events.push(
-                    <a
-                        key={index}
+                    <span
+                        key={Math.random()}
                         className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                         onClick={() => setUid(data[config.events.edit.key])}
                         data-bs-toggle="modal"
@@ -168,14 +168,14 @@ export default function Rolelist(props) {
                                 <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" opacity="0.3"></path>
                             </svg>
                         </span>
-                    </a>
+                    </span>
                 )
             }
             if (!config.events.delete) {
                 events.push(
-                    <a 
+                    <span
                     onClick={() => deleteItem(data,config.events.delete)}
-                        key={index}
+                        key={Math.random()}
                         className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                       
                     >
@@ -189,7 +189,7 @@ export default function Rolelist(props) {
                                 </g>
                             </svg>
                         </span>
-                    </a>
+                    </span>
                 )
             }
             return events

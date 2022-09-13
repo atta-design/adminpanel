@@ -205,8 +205,8 @@ export default function TableList2(props) {
     if (isEventsAvailable()) {
       if (config.events.edit) {
         events.push(
-          <a
-            key={index}
+          <span
+            key={Math.random()}
             className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
             onClick={() => setUid(data[config.events.edit.key])}
             data-bs-toggle="modal"
@@ -232,14 +232,14 @@ export default function TableList2(props) {
                 ></path>
               </svg>
             </span>
-          </a>
+          </span>
         );
       }
       if (config.events.delete) {
         events.push(
           <a
           href="##"
-            key={index}
+            key={Math.random()}
             className="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
           >
             <span className="svg-icon svg-icon-3">
