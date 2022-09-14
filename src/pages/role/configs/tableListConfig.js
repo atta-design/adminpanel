@@ -27,7 +27,7 @@ export const TableListConfig = {
     'columns': [
         {
             dataField: "title",
-            caption: "عنوان",
+            caption: localStorage.getItem('lng')==='en'?'Title':(localStorage.getItem('lng')==='fa'?'عنوان':'العنوان'),
             dataType: "string",
             visible: true,
             alignment: "right",
@@ -35,7 +35,7 @@ export const TableListConfig = {
         },
         {
             dataField: "entity",
-            caption: "توضیح",
+            caption: localStorage.getItem('lng')==='en'?'Description':(localStorage.getItem('lng')==='fa'?'توضیح':'وصف'),
             dataType: "string",
             visible: true,
             alignment: "center",
@@ -48,7 +48,7 @@ export const TableListConfig = {
         },
         {
             dataField: "createDate",
-            caption: "تاریخ ایجاد",
+            caption: localStorage.getItem('lng')==='en'?'Date of Creation':(localStorage.getItem('lng')==='fa'?'تاریخ ایجاد':'تاریخ الخلق'),
             dataType: "date",
             visible: true,
             alignment: "center",
@@ -60,7 +60,7 @@ export const TableListConfig = {
         },
         {
             dataField: "modifyDate",
-            caption: "تاریخ ویرایش",
+            caption: localStorage.getItem('lng')==='en'?'Date of Edition':(localStorage.getItem('lng')==='fa'?'تاریخ ویرایش':'تاریخ التحریر'),
             dataType: "date",
             visible: true,
             alignment: "center",

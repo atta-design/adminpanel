@@ -72,7 +72,7 @@ function Roles2() {
         }
       }
     } catch (e) {
-      showMessage(true, "خطایی در واکشی داده رخ داده است", "error");
+      showMessage(true, t('FetchingError'), "error");
     }
   }
 
@@ -80,9 +80,17 @@ function Roles2() {
     getLoadData();
   }, [reduxdata.status]);
 
+
+  var selectValue = localStorage.getItem('lng');
+  if(null === selectValue)
+{
+  selectValue = 'fa';
+}
+let dir
+selectValue==='en'?dir="ltr":dir="rtl"
   return (
     <DataContext.Provider value={value}>
-   {isLoading?<Loading/>:   <div className=" post d-flex flex-column-fluid" >
+   {isLoading?<Loading/>:   <div dir={dir} className=" post d-flex flex-column-fluid" >
         <div id="  kt_content_container" >
           <div className="border border-2 border border-secondary card mx-18 mb-5 mb-xl-8">
             <div className="card mb-5 mb-xl-8">
@@ -99,7 +107,7 @@ function Roles2() {
            
                                 </div>
                                 </div>
-              <div className=" card-body py-3">
+              <div dir='rtl' className=" card-body py-3">
                 {reduxdata.length !== 0 && (
                   <div>
                     {" "}

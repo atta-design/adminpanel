@@ -12,11 +12,15 @@ function convertToPersain(data) {
 const getStatusSpan = (value) => {
     if ([0, 1, 2].includes(value)) {
         return(
-            <span className="badge badge-light-danger fs-8 fw-bolder">غیرفعال</span>
+            <span className="badge badge-light-danger fs-8 fw-bolder">
+                  { localStorage.getItem('lng')==='en'?'Inactive':(localStorage.getItem('lng')==='fa'?'غیر فعال':'غیر نشط')}
+            </span>
         )
     } else {
         return(
-            <span className="badge badge-light-success fs-8 fw-bolder">فعال</span>
+            <span className="badge badge-light-success fs-8 fw-bolder">
+                 { localStorage.getItem('lng')==='en'?'َActive':(localStorage.getItem('lng')==='fa'?'فعال':'نشیط')}
+            </span>
         )
     }
 }

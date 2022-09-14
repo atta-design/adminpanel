@@ -150,7 +150,9 @@ export const TextBoxConfig = {
         inputAttr: {class: "form-control form-control-lg form-control-solid"}, // Specifies the attributes to be passed on to the underlying <input> element of the file type.
     },
 	validationRules: [
-		{type:'email', message: 'ایمیل نامعتبر است!'},
-		{type:'required', message: 'ایمیل الزامی است!'},
+		{type:'email', message: localStorage.getItem('lng')==='en'?'The email is invalid':
+		(localStorage.getItem('lng')==='fa'?'ایمیل نامعتبر است':' البرید الکرترونیه غیر صالح ')},
+		{type:'required', message: localStorage.getItem('lng')==='en'?' email is Required':
+		(localStorage.getItem('lng')==='fa'?'وارد کردن ایمیل الزامی است':' البرید الکرترونیه  مطلوب ')},
 	], // types: async|compare|custom|email|numeric|pattern|range|required|stringLength
 };

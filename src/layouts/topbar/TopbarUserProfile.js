@@ -16,9 +16,13 @@ let history = useHistory();
         selectValue = 'fa';
     }
 
+    
+ let dir
+selectValue==='en'?dir="ltr":dir="rtl"
+
     return (
         <>
-            <div className="d-flex align-items-stretch flex-shrink-0">
+            <div dir={dir} className="d-flex align-items-stretch flex-shrink-0">
 
                 {/* sub user profile */}
                 <div className="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
@@ -39,11 +43,11 @@ let history = useHistory();
                         </div>
                         <div className="separator my-2"></div>
                         <div className="menu-item px-5">
-                            <a href="account/" className="menu-link px-5">پروفایل من</a>
+                            <a href="account/" className="menu-link px-5">{t('myprofile')}</a>
                         </div>
                         <div className="menu-item px-5">
                             <a href="pages/projects/list.html" className="menu-link px-5">
-                                <span className="menu-text">پروژه ها من</span>
+                                <span className="menu-text">{t('myprojects')}</span>
                                 <span className="menu-badge">
                                     <span className="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
                                 </span>
@@ -55,7 +59,7 @@ let history = useHistory();
                         </div>
                         <div className="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start" data-kt-menu-flip="bottom">
 													<a href="#" className="menu-link px-5">
-														<span className="menu-title position-relative">زبان
+														<span className="menu-title position-relative">{t('language')}
 														<span className="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">{selectValue==='en'?
                                                         <span>English</span>:(selectValue==='fa'?<span>فارسی</span>:<span>عربی</span>)}
                                                         {selectValue==='en'?
@@ -95,10 +99,10 @@ let history = useHistory();
 													
 												</div>
                         <div className="menu-item px-5 my-1">
-                            <a href="account/settings.html" className="menu-link px-5">اکانت تنظیمات</a>
+                            <a href="account/settings.html" className="menu-link px-5">{t('settingAccount')}</a>
                         </div>
                         <div className="menu-item px-5">
-                            <a href="authentication/flows/basic/sign-in.html" className="menu-link px-5">خروج</a>
+                            <a href="authentication/flows/basic/sign-in.html" className="menu-link px-5">{t('exit')}</a>
                         </div>
                     </div>
                 </div>

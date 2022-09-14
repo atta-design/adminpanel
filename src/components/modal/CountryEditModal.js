@@ -195,7 +195,7 @@ export default function CountryEditModal(props) {
           }
         }
       } catch (e) {
-        return <div>خطایی در واکشی داده رخ داده است</div>;
+        return <div>{t('FetchingError')}</div>;
       }
     }
     getLoadData();
@@ -235,9 +235,17 @@ export default function CountryEditModal(props) {
       }
     } catch (e) {}
   }
+  
+  var selectValue = localStorage.getItem('lng');
+  if(null === selectValue)
+{
+  selectValue = 'fa';
+}
+let dir
+selectValue==='en'?dir="ltr":dir="rtl"
 
   return (
-    <div className="modal fade" id="kt_modal_edit_role" aria-hidden="true">
+    <div dir={dir} className="modal fade" id="kt_modal_edit_role" aria-hidden="true">
       <div className="modal-dialog modal-fullscreen p-9">
         <div className="modal-content">
           <div className="modal-header">
@@ -489,7 +497,7 @@ export default function CountryEditModal(props) {
                       visible={loadPanelVisible}
                       closeOnOutsideClick={false}
                       shadingColor="rgba(0,0,0,0.4)"
-                      message={"در حال آماده سازی ..."}
+                      message={t('preparing')}
                     />
                   </div>
                 </form>

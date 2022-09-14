@@ -26,15 +26,15 @@ export const SelectBoxConfig = {
         valueExpr: "key",
         displayExpr: "title",
         dataSource: [
-            {title:'همه', key: 0},
-            {title:'غیرفعال', key: 1},
-            {title:'فعال', key: 3},
+            {title:localStorage.getItem('lng')==='en'?'All':(localStorage.getItem('lng')==='fa'?'همه':'الجميع'), key: 0},
+            {title: localStorage.getItem('lng')==='en'?'Inactive':(localStorage.getItem('lng')==='fa'?'غیر فعال':'غیر نشط'), key: 1},
+            {title:localStorage.getItem('lng')==='en'?'َActive':(localStorage.getItem('lng')==='fa'?'فعال':'نشیط'), key: 3},
         ],
         searchExpr: null,
         noDataText: "",
         name: "", // Default Value: ''
         label: "", // Default Value: ''
-        placeholder: "وضعیت", // Default Value: ''
+        placeholder: localStorage.getItem('lng')==='en'?'Status':(localStorage.getItem('lng')==='fa'?'وضعیت':'حالة'),
         searchMode: 'contains', // Accepted Values: 'contains' | 'startswith'
         labelMode: "hidden", // Accepted Value: 'static' | 'floating' | 'hidden'
         valueChangeEvent: "change", // "keyup", "blur", "change", "input", and "focusout"

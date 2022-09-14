@@ -62,7 +62,7 @@ export default function TableList2(props) {
 
     } catch (e) {
       setIsLoading(false);
-      showMessage(true, "خطایی در واکشی داده رخ داده است", "error");
+      showMessage(true, t('FetchingError'), "error");
     }
    
 

@@ -1,15 +1,18 @@
 export const sharedResults = [
     {
         status: 0,
-        message: "نامعلوم"
+        message: localStorage.getItem('lng')==='en'?'unknown':
+        (localStorage.getItem('lng')==='fa'?'نامعلوم':'مجهول'),
     },
     {
         status: 1,
-        message: "موفقیت آمیز"
+        message: localStorage.getItem('lng')==='en'?'successful':
+        (localStorage.getItem('lng')==='fa'?'موقفیت آمیز':'ناجح'),
     },
     {
         status: 2,
-        message: "عملیات ناموفق"
+        message:localStorage.getItem('lng')==='en'?'Unsuccessful':
+        (localStorage.getItem('lng')==='fa'?'عملیات ناموفق':'غیرناجح'),
     },
     {
         status: 6,
@@ -30,7 +33,8 @@ export const sharedResults = [
     //user
     {
         status: 10,
-        message: "رمز یا ایمیل شما نامعتبر است"
+        message: localStorage.getItem('lng')==='en'?'Password or email is invalid':
+        (localStorage.getItem('lng')==='fa'?'رمز یا ایمیل نامعتبر است':'کلمه المرور او برید الالکترونی غیر صالح'),
     },
     {
         status: 11,
@@ -38,7 +42,8 @@ export const sharedResults = [
     },
     {
         status: 12,
-        message: "کاربر یافت نشد"
+        message:localStorage.getItem('lng')==='en'?'User not found':
+        (localStorage.getItem('lng')==='fa'?'کاربر یافت نشد':'المستخدم لیس موجود'),
     },
     {
         status: 13,
@@ -50,7 +55,8 @@ export const sharedResults = [
     },
     {
         status: 50,
-        message: "یافت نشد"
+        message:localStorage.getItem('lng')==='en'?' Not found':
+        (localStorage.getItem('lng')==='fa'?' یافت نشد':' لیس موجود'),
     },
     {
         status: 51,

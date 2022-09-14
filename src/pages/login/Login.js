@@ -123,9 +123,11 @@ selectValue==='en'?dir="ltr":dir="rtl"
           </div>
         </form>
         <div>
-          <button type="button" className="btn btn-light" onClick={()=>languagehandler('en')}>English</button>
-          <button type="button" className="btn btn-light" onClick={()=>languagehandler('ar')}>عربی</button>
-          <button type="button" className="btn btn-light" onClick={()=>languagehandler('fa')}>فارسی</button>
+        {selectValue!=='en'&&  <button type="button" className="btn btn-light" onClick={()=>languagehandler('en')}>English</button>}
+        
+        {selectValue!=='ar'&&<button type="button" className="btn btn-light" onClick={()=>languagehandler('ar')}>عربی</button>} 
+        {selectValue!=='fa'&&  <button type="button" className="btn btn-light" onClick={()=>languagehandler('fa')}>فارسی</button>} 
+        
         </div>
       </div>
     </div>}</div>

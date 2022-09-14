@@ -3,12 +3,12 @@ import Loading from '../../layouts/common/Spinner';
 import React, { useEffect, useState } from 'react';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { GetDataApi, PostApi } from '../../managers/HttpManager';
+import { useTranslation } from 'react-i18next';
 
 // components
 import Chips from '../chips/Chips';
 import TextBoxComponent from '../textBox/TextBox';
 import TextAreaComponent from '../textArea/TextArea';
-import { default as Button } from '../button/Button';
 import { default as CheckBox } from '../checkBox/CheckBox';
 import { default as SelectBox } from '../selectBox/SelectBox';
 
@@ -21,7 +21,6 @@ import { ChipsConfig as UsersRole } from '../../pages/role/editConfigs/chipsConf
 import { CheckBoxConfig as canAddConfig } from '../../pages/role/editConfigs/canAddCheckBoxConfig';
 import { CheckBoxConfig as canEditConfig } from '../../pages/role/editConfigs/canEditCheckBoxConfig';
 import { CheckBoxConfig as IsShownConfig } from '../../pages/role/editConfigs/isShownCheckBoxConfig';
-import { ButtonConfig as SubmitButtonConfig } from '../../pages/role/editConfigs/submitButtonConfig';
 import { SelectBoxConfig as EntityConfig } from '../../pages/role/editConfigs/entitySelectBoxConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from '../../pages/role/editConfigs/titleTextBoxConfig';
 import { CheckBoxConfig as canDeleteConfig } from '../../pages/role/editConfigs/canDeleteCheckBoxConfig';
@@ -33,6 +32,7 @@ export default function RoleEditModal(props) {
 
 	const uid = props.uid
 	const titleModal = props.title
+    const {t}= useTranslation()
 
 	const { showMessage } = useToast();
     const [add, setAdd] = useState(null);
@@ -88,7 +88,7 @@ export default function RoleEditModal(props) {
             }
             catch (e) {
                 return (
-                    <div>خطایی در واکشی داده رخ داده است</div>
+                    <div> {t('FetchingError')}  </div>
                 )
             }
         }
@@ -133,13 +133,19 @@ export default function RoleEditModal(props) {
             }
         }
         catch (e) {
-            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            showMessage(true, t('FetchingError'), 'error');
         }
     }
-	
+    var selectValue = localStorage.getItem('lng');
+    if(null === selectValue)
+{
+    selectValue = 'fa';
+}
+ let dir
+selectValue==='en'?dir="ltr":dir="rtl"
 
 	return (
-		<div className='modal fade' id='kt_modal_edit_role' aria-hidden='true'>
+		<div dir={dir} className='modal fade' id='kt_modal_edit_role' aria-hidden='true'>
 			<div className='modal-dialog modal-fullscreen p-9'>
 				<div className='modal-content'>
 					<div className='modal-header'>
@@ -162,7 +168,7 @@ export default function RoleEditModal(props) {
                                         <div className="col-md-18">
                                             <div className="row mb-5">
                                                 <div className="col-md-6 fv-row">
-                                                    <label className="fs-5 fw-bold mb-2">عنوان</label>
+                                                    <label className="fs-5 fw-bold mb-2">{t('title')}</label>
                                                     {
                                                         title != null &&
                                                         <TextBoxComponent
@@ -173,7 +179,7 @@ export default function RoleEditModal(props) {
                                                     }
                                                 </div>
                                                 <div className="col-md-6 fv-row">
-                                                    <label className="fs-5 fw-bold mb-2">موجودیت</label>
+                                                    <label className="fs-5 fw-bold mb-2">{t('existence')}</label>
                                                     {
                                                         entity != null &&
                                                         <SelectBox
@@ -185,7 +191,7 @@ export default function RoleEditModal(props) {
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-6 fw-bold mb-2">توضیحات</label>
+                                                <label className="fs-6 fw-bold mb-2">{t('Description')}</label>
                                                 {
                                                     description != null &&
                                                     <TextAreaComponent
@@ -199,7 +205,7 @@ export default function RoleEditModal(props) {
                                         <div className="separator separator-dashed my-6"></div>
                                         <div className="row">
                                             <div className="d-flex flex-column mb-10 fv-row">
-                                                <label className="fs-6 fw-bold mb-2">کاربران در این نقش</label>
+                                                <label className="fs-6 fw-bold mb-2">{t('UsersInThisRole')}</label>
                                                 {
                                                     entity != null && usersRole != null &&
                                                     <Chips
@@ -223,8 +229,8 @@ export default function RoleEditModal(props) {
                                                     />
                                                 }
                                                 <span className="form-check-label d-flex flex-column align-items-start">
-                                                    <span className="fw-bolder fs-5 mb-0">نمایش موجودیت</span>
-                                                    <span className="text-muted fs-6">با تیک زدن این آیتم امکان فقط نمایش در موجودیت مورد نظر اعمال میشود</span>
+                                                    <span className="fw-bolder fs-5 mb-0">{t('existenceShow')}</span>
+                                                    <span className="text-muted fs-6">{t('showChecbox')}</span>
                                                 </span>
                                             </label>
                                             <div className="separator separator-dashed my-6"></div>
@@ -238,8 +244,8 @@ export default function RoleEditModal(props) {
                                                     />
                                                 }
                                                 <span className="form-check-label d-flex flex-column align-items-start">
-                                                    <span className="fw-bolder fs-5 mb-0">افزودن موجودیت</span>
-                                                    <span className="text-muted fs-6">با تیک زدن این آیتم امکان افزودن در موجودیت مورد نظر اعمال میشود</span>
+                                                    <span className="fw-bolder fs-5 mb-0">{t('existenceAdd')}</span>
+                                                    <span className="text-muted fs-6">{t('addChecbox')}</span>
                                                 </span>
                                             </label>
                                             <div className="separator separator-dashed my-6"></div>
@@ -254,8 +260,8 @@ export default function RoleEditModal(props) {
                                                     />
                                                 }
                                                 <span className="form-check-label d-flex flex-column align-items-start">
-                                                    <span className="fw-bolder fs-5 mb-0">ویرایش موجودیت</span>
-                                                    <span className="text-muted fs-6">با تیک زدن این آیتم امکان ویرایش کردن در موجودیت مورد نظر اعمال میشود</span>
+                                                    <span className="fw-bolder fs-5 mb-0">{t('existenceEdit')}</span>
+                                                    <span className="text-muted fs-6"> {t('editChecbox')}</span>
                                                 </span>
                                             </label>
                                             <div className="separator separator-dashed my-6"></div>
@@ -269,8 +275,8 @@ export default function RoleEditModal(props) {
                                                     />
                                                 }
                                                 <span className="form-check-label d-flex flex-column align-items-start">
-                                                    <span className="fw-bolder fs-5 mb-0">حذف موجودیت</span>
-                                                    <span className="text-muted fs-6">با تیک زدن این آیتم امکان حذف کردن در موجودیت مورد نظر اعمال میشود</span>
+                                                    <span className="fw-bolder fs-5 mb-0">{t('existenceDelete')} </span>
+                                                    <span className="text-muted fs-6">{t('deleteChecbox')}</span>
                                                 </span>
                                             </label>
                                             <div className="separator separator-dashed my-6"></div>
@@ -284,15 +290,17 @@ export default function RoleEditModal(props) {
                                                     />
                                                 }
                                                 <span className="form-check-label d-flex flex-column align-items-start">
-                                                    <span className="fw-bolder fs-5 mb-0">عمومی سازی موجودیت</span>
-                                                    <span className="text-muted fs-6">با تیک زدن این آیتم امکان عموی سازی موجودیت فراهم میشود</span>
+                                                    <span className="fw-bolder fs-5 mb-0">{t('existencedeclaration')}</span>
+                                                    <span className="text-muted fs-6">{t('publishChecbox')} </span>
                                                 </span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="card-footer d-flex justify-content-end py-6 px-9">
-                                    <Button config={SubmitButtonConfig} />
+                                <button className="btn btn-primary" type="submit">
+                      {t('save')}
+                    </button>
                                     <LoadPanel
                                         shading={true}
                                         showPane={true}
@@ -301,7 +309,7 @@ export default function RoleEditModal(props) {
                                         visible={loadPanelVisible}
                                         closeOnOutsideClick={false}
                                         shadingColor="rgba(0,0,0,0.4)"
-                                        message={'در حال آماده سازی ...'}
+                                        message={t('preparing')}
                                     />
                                 </div>
                             </form>

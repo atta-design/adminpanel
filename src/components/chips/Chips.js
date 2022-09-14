@@ -175,7 +175,6 @@ class Chips extends React.Component {
                     <Template name='loadIndicator' render={() => <IndicatorIcon isLoaded={this.state.isLoaded} /> }/>
                 </Autocomplete>
                 <div id="chips-selected-list">
-                    کاربران انتخاب شده:
                     <ul id="list">
                         {this.state.values.map((value) => <li key={value[this.config.settings.key]}>{value[this.config.settings.valueExpr] || value['name']} <i style={{ "cursor": "pointer" }} className="dx-icon dx-icon-close" onClick={() => this.closeHandler(value)} /></li>)}
                     </ul>

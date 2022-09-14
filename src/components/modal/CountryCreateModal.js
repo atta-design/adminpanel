@@ -9,7 +9,6 @@ import {useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 // components
 import TextBoxComponent from '../textBox/TextBox';
-import { default as Button } from '../button/Button';
 import {default as FileUploader} from '../fileUploader/FileUploader';
 
 //utiles
@@ -19,7 +18,6 @@ import getStatusMessage from '../../utils/statusHandler';
 // configs
 import { TextBoxConfig as TitleTextBoxConfig } from './configs/country/TitleConfig';
 import { FileUploaderConfig as ImageDropZone } from './configs/country/imageConfig';
-import { ButtonConfig as SubmitButtonConfig } from './configs/country/SubmitButtonConfig';
 import { FileUploaderConfig as ThumbnailDropZone } from './configs/country/thumbnailConfig';
 
 // styles
@@ -210,13 +208,20 @@ export default function CountryCreateModal(props) {
             }
         }
         catch (e) {
-            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            showMessage(true,t('FetchingError'), 'error');
         }
     }
 	
+    var selectValue = localStorage.getItem('lng');
+    if(null === selectValue)
+  {
+    selectValue = 'fa';
+  }
+  let dir
+  selectValue==='en'?dir="ltr":dir="rtl"
 
 	return (
-		<div className='modal fade' id='kt_modal_create_country' aria-hidden='true'>
+		<div dir={dir} className='modal fade' id='kt_modal_create_country' aria-hidden='true'>
 			<div className='modal-dialog modal-fullscreen p-9'>
 				<div className='modal-content'>
 					<div className='modal-header'>
@@ -380,7 +385,7 @@ export default function CountryCreateModal(props) {
                                         visible={loadPanelVisible}
                                         closeOnOutsideClick={false}
                                         shadingColor="rgba(0,0,0,0.4)"
-                                        message={'در حال آماده سازی ...'}
+                                        message={t('preparing')}
                                     />
                                 </div>
                             </form>

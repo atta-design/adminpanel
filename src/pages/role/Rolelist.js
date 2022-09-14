@@ -1,10 +1,11 @@
 import {useContext } from 'react';
 import { PostApi } from '../../managers/HttpManager';
+import { useTranslation } from 'react-i18next';
 
 const Swal = require("sweetalert2");
 
 export default function Rolelist(props) {
-
+const{t}=useTranslation()
     const config = props.config
     const Modal = props.modal.obj
     const modalTitle = props.modal.title
@@ -81,7 +82,7 @@ export default function Rolelist(props) {
     }
     const checkEventsAvailable = (cIndex) => {
         if (isEventsAvailable()) {
-            return(<th key={cIndex} className="min-w-200px">عملیات</th>)
+            return(<th key={cIndex} className="min-w-200px">{t('operation')}</th>)
         }
     }
     async function deleteItem(data) {
@@ -94,12 +95,12 @@ export default function Rolelist(props) {
         });
         Swal.fire({
             icon: 'warning',
-            title: 'آیا از حذف کشور اطمینان دارید؟',
+            title: t('deleteMassage'),
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'بله',
-            cancelButtonText: `لغو عملیات حدف`,
+            confirmButtonText: t('yes'),
+            cancelButtonText: t('No'),
             customClass:{
                 icon: 'icon-swal'
             },
@@ -109,7 +110,7 @@ export default function Rolelist(props) {
                     const request = await PostApi('/Role/Delete',data);
                     if (request.status !== 0) {
                         Swal.showValidationMessage(
-                            `عملیات ناموفق بود`
+                           t('showUnSuccess')
                         )
                         
                     }else{
@@ -117,15 +118,13 @@ export default function Rolelist(props) {
                     }
                 }
                 catch (e) {
-                    throw new Error('خطایی در واکشی داده رخ داده است')
+                    throw new Error(t('FetchingError'))
                 }
             }
         }).then((result) => {
             if (result.isConfirmed) {
                 swalWithBootstrapButtons.fire(
-                    'حذف شد!',
-                    'نقش باموفقیت حذف شد.',
-                    'success'
+                    t('showSuccess')
                 )
             }
         });
@@ -228,7 +227,7 @@ export default function Rolelist(props) {
                                     {
                                         isEventsAvailable() && <td key={dIndex} className="text-end">
 
-                                            {  getEvents(data)}
+                                            {getEvents(data)}
                                            
 
                                             

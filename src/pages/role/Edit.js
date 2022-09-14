@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { GetDataApi, PostApi } from '../../managers/HttpManager';
+import { useTranslation } from 'react-i18next';
 // components
 import Chips from '../../components/chips/Chips';
 import TextBoxComponent from '../../components/textBox/TextBox';
@@ -29,6 +30,8 @@ import { TextAreaConfig as descriptionTextAreaConfig } from './editConfigs/decri
 
 
 export default function Edit() {
+
+    const{t}=useTranslation()
 
     let { uid } = useParams();
     const history = useHistory();
@@ -69,7 +72,7 @@ export default function Edit() {
             }
             catch (e) {
                 return (
-                    <div>خطایی در واکشی داده رخ داده است</div>
+                    <div>{t('FetchingError')}</div>
                 )
             }
         }
@@ -113,7 +116,7 @@ export default function Edit() {
             }
         }
         catch (e) {
-            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            showMessage(true,t('FetchingError'), 'error');
         }
     }
 
@@ -270,7 +273,7 @@ export default function Edit() {
                                 visible={loadPanelVisible}
                                 closeOnOutsideClick={false}
                                 shadingColor="rgba(0,0,0,0.4)"
-                                message={'در حال آماده سازی ...'}
+                                message={t('preparing')} 
                             />
                         </div>
                     </form>

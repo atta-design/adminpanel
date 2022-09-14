@@ -219,19 +219,13 @@ export const GridConfig = {
         autoExpandAll: true,
         allowCollapsing: true,
         contextMenuEnabled: false,
-        texts: {
-            ungroup: "حذف گروه",
-            ungroupAll: "لغو گروه کردن همه",
-            groupContinuedMessage: "ادامه از صفحه قبل",
-            groupContinuesMessage: "ادامه در صفحه بعد",
-            groupByThisColumn: "گروه بندی بر اساس این ستون",
-        }
+       
     },
     'columns': [
       
         {
             dataField: "firstname",
-            caption: "نام",
+            caption:localStorage.getItem('lng')==='en'?'First Name':(localStorage.getItem('lng')==='fa'?'نام ':'اسم'),
             dataType: "string",
             visible: true,
             alignment: "center",
@@ -246,7 +240,7 @@ export const GridConfig = {
         },
         {
             dataField: "lastname",
-            caption: "نام خانوادگی",
+            caption: localStorage.getItem('lng')==='en'?'Last Name':(localStorage.getItem('lng')==='fa'?'نام خانوادگی':'اللقب'),
             dataType: "string",
             visible: true,
             alignment: "center",
@@ -261,7 +255,7 @@ export const GridConfig = {
         },
         {
             dataField: "email",
-            caption: "ایمیل",
+            caption:localStorage.getItem('lng')==='en'?'Email':(localStorage.getItem('lng')==='fa'?'ایمیل':'برید الالکترونی '),
             dataType: "string",
             visible: true,
             alignment: "center",
@@ -276,7 +270,7 @@ export const GridConfig = {
         },
         {
             dataField: "age",
-            caption: "سن",
+            caption: localStorage.getItem('lng')==='en'?'Age':(localStorage.getItem('lng')==='fa'?'سن':'سن '),
             dataType: "number",
             visible: true,
             alignment: "center",
@@ -291,7 +285,7 @@ export const GridConfig = {
         },
         {
             dataField: "phone",
-            caption: "شماره",
+            caption: localStorage.getItem('lng')==='en'?'Phone number':(localStorage.getItem('lng')==='fa'?'شماره تلفن':'رقم الهاتف'),
             dataType: "string",
             visible: true,
             alignment: "center",
@@ -306,7 +300,7 @@ export const GridConfig = {
         },
         {
             dataField: "createDate",
-            caption: "تاریخ ایجاد",
+            caption: localStorage.getItem('lng')==='en'?'Date of Creation':(localStorage.getItem('lng')==='fa'?'تاریخ ایجاد':'تاریخ الخلق'),
             dataType: "date",
             visible: true,
             alignment: "center",

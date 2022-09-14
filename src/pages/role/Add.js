@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { LoadPanel } from 'devextreme-react/load-panel';
+import { useTranslation } from 'react-i18next';
 
 import { PostApi } from '../../managers/HttpManager';
 
 // components
 import TextBoxComponent from '../../components/textBox/TextBox';
 import TextAreaComponent from '../../components/textArea/TextArea';
-import { default as Button } from '../../components/button/Button';
 import { default as CheckBox } from '../../components/checkBox/CheckBox';
 import { default as SelectBox } from '../../components/selectBox/SelectBox';
 
@@ -19,7 +19,6 @@ import getStatusMessage from '../../utils/statusHandler';
 import { CheckBoxConfig as canAddConfig } from './canAddCheckBoxConfig';
 import { CheckBoxConfig as canEditConfig } from './canEditCheckBoxConfig';
 import { CheckBoxConfig as IsShownConfig } from './isShownCheckBoxConfig';
-import { ButtonConfig as SubmitButtonConfig } from './submitButtonConfig';
 import { SelectBoxConfig as EntityConfig } from './entitySelectBoxConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from './titleTextBoxConfig';
 import { CheckBoxConfig as canDeleteConfig } from './canDeleteCheckBoxConfig';
@@ -30,7 +29,8 @@ export default function AddRule() {
 
     const history = useHistory();
     const { showMessage } = useToast();
-    
+    const{t}=useTranslation()
+
     const [add, setAdd] = useState(false);
     const [edit, setEdit] = useState(false);
     const [view, setView] = useState(true);
@@ -74,31 +74,39 @@ export default function AddRule() {
             }
         }
         catch (e) {
-            showMessage(true, 'خطایی در واکشی داده رخ داده است', 'error');
+            showMessage(true,t('FetchingError'), 'error');
         }
     }
 
+    
+  var selectValue = localStorage.getItem('lng');
+  if(null === selectValue)
+{
+  selectValue = 'fa';
+}
+let dir
+selectValue==='en'?dir="ltr":dir="rtl"
 
     return (
-        <div className="post d-flex flex-column-fluid" id="kt_post">
+        <div dir={dir} className="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" className="container">
                 <div className="card">
                     <form className="form mb-15" id="kt_contact_form" onSubmit={postRule} >
                         <div className="card-body p-lg-18">
                             <div className="row mb-3">
                                 <div className="col-md-18">
-                                    <h2 className="fw-bolder text-dark mb-9">ایجادنقش جدید</h2>
+                                    <h2 className="fw-bolder text-dark mb-9">{t('addrole')}</h2>
                                     <div className="separator separator-dashed my-6"></div>
                                     <div className="row mb-5">
                                         <div className="col-md-6 fv-row">
-                                            <label className="fs-5 fw-bold mb-2">عنوان</label>
+                                            <label className="fs-5 fw-bold mb-2">{t('title')}</label>
                                             <TextBoxComponent
                                                 config={TitleTextBoxConfig}
                                                 onValueChanged={(data) => setTitle(data.value)}
                                             ></TextBoxComponent>
                                         </div>
                                         <div className="col-md-6 fv-row">
-                                            <label className="fs-5 fw-bold mb-2">موجودیت</label>
+                                            <label className="fs-5 fw-bold mb-2">{t('existence')}</label>
                                             <SelectBox
                                                 config={EntityConfig}
                                                 onValueChanged={(data) => setEntity(data.value)}
@@ -106,7 +114,7 @@ export default function AddRule() {
                                         </div>
                                     </div>
                                     <div className="d-flex flex-column mb-10 fv-row">
-                                        <label className="fs-6 fw-bold mb-2">توضیحات</label>
+                                        <label className="fs-6 fw-bold mb-2">{t('Description')}</label>
                                         <TextAreaComponent
                                             config={descriptionTextAreaConfig}
                                             onValueChanged={(data) => setDescription(data.value)}
@@ -120,8 +128,8 @@ export default function AddRule() {
                                             onValueChanged={(data) => setView(data.value)} 
                                         />
                                         <span className="form-check-label d-flex flex-column align-items-start">
-                                            <span className="fw-bolder fs-5 mb-0">نمایش موجودیت</span>
-                                            <span className="text-muted fs-6">با تیک زدن این آیتم امکان فقط نمایش در موجودیت مورد نظر اعمال میشود</span>
+                                            <span className="fw-bolder fs-5 mb-0">{t('existenceShow')}</span>
+                                            <span className="text-muted fs-6">{t('showChecbox')}</span>
                                         </span>
                                     </label>
                                     <div className="separator separator-dashed my-6"></div>
@@ -131,8 +139,8 @@ export default function AddRule() {
                                             onValueChanged={(data) => setAdd(data.value)} 
                                         />
                                         <span className="form-check-label d-flex flex-column align-items-start">
-                                            <span className="fw-bolder fs-5 mb-0">افزودن موجودیت</span>
-                                            <span className="text-muted fs-6">با تیک زدن این آیتم امکان افزودن در موجودیت مورد نظر اعمال میشود</span>
+                                            <span className="fw-bolder fs-5 mb-0"> {t('existenceAdd')}</span>
+                                            <span className="text-muted fs-6">{t('addChecbox')}</span>
                                         </span>
                                     </label>
                                     <div className="separator separator-dashed my-6"></div>
@@ -143,8 +151,8 @@ export default function AddRule() {
                                             onValueChanged={(data) => setEdit(data.value)} 
                                         />
                                         <span className="form-check-label d-flex flex-column align-items-start">
-                                            <span className="fw-bolder fs-5 mb-0">ویرایش موجودیت</span>
-                                            <span className="text-muted fs-6">با تیک زدن این آیتم امکان ویرایش کردن در موجودیت مورد نظر اعمال میشود</span>
+                                            <span className="fw-bolder fs-5 mb-0"> {t('existenceEdit')}</span>
+                                            <span className="text-muted fs-6">{t('editChecbox')}</span>
                                         </span>
                                     </label>
                                     <div className="separator separator-dashed my-6"></div>
@@ -154,8 +162,8 @@ export default function AddRule() {
                                             onValueChanged={(data) => setDelete(data.value)} 
                                         />
                                         <span className="form-check-label d-flex flex-column align-items-start">
-                                            <span className="fw-bolder fs-5 mb-0">حذف موجودیت</span>
-                                            <span className="text-muted fs-6">با تیک زدن این آیتم امکان حذف کردن در موجودیت مورد نظر اعمال میشود</span>
+                                            <span className="fw-bolder fs-5 mb-0">{t('existenceDelete')} </span>
+                                            <span className="text-muted fs-6">{t('deleteChecbox')}</span>
                                         </span>
                                     </label>
                                     <div className="separator separator-dashed my-6"></div>
@@ -165,15 +173,17 @@ export default function AddRule() {
                                             onValueChanged={(data) => setPublish(data.value)} 
                                         />
                                         <span className="form-check-label d-flex flex-column align-items-start">
-                                            <span className="fw-bolder fs-5 mb-0">عمومی سازی موجودیت</span>
-                                            <span className="text-muted fs-6">با تیک زدن این آیتم امکان عموی سازی موجودیت فراهم میشود</span>
+                                            <span className="fw-bolder fs-5 mb-0">{t('existencedeclaration')}</span>
+                                            <span className="text-muted fs-6">{t('publishChecbox')} </span>
                                         </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div className="card-footer d-flex justify-content-end py-6 px-9">
-                            <Button config={SubmitButtonConfig} />
+                        <button className="btn btn-primary" type="submit">
+                      {t('save')}
+                    </button>
                             <LoadPanel
                                 visible={loadPanelVisible}
                                 shading={true}
