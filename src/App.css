@@ -42,3 +42,7 @@ margin-right:-24px!important;
 margin-top: 10px;
 margin-bottom: 10px;
 }
+.editor{
+  overflow: scroll;
+  height:400px;
+}

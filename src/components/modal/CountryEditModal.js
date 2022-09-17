@@ -1,32 +1,45 @@
 import { KTSVG } from "../../utils/KTSVG";
 import Loading from "../../layouts/common/Spinner";
 import React, { useEffect, useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { LoadPanel } from "devextreme-react/load-panel";
 import ProgressBar from "devextreme-react/progress-bar";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { GetDataApi, PostApi } from "../../managers/HttpManager";
-import {useLocation } from 'react-router-dom'
-import { useTranslation } from 'react-i18next';
+import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+// import { Editor } from '@tinymce/tinymce-react';
+import ReactQuill from "react-quill";
+import  "react-quill/dist/react-quill";
+
 // components
 import TextBoxComponent from "../textBox/TextBox";
-
+import "../../App.css";
 import { default as FileUploader } from "../fileUploader/FileUploader";
 
 //utiles
 
 // configs
+
 import { TextBoxConfig as TitleTextBoxConfig } from "./configs/country/TitleConfig";
 import { FileUploaderConfig as ImageDropZone } from "./configs/country/imageConfig";
 import { FileUploaderConfig as ThumbnailDropZone } from "./configs/country/thumbnailConfig";
+import  {
+  modules1,
+  modules2,
+  modules3,
+  formats,
+  QuillToolbar1,
+  QuillToolbar2,
+  QuillToolbar3
+} from "../editorToolbar/EditorToolbar";
 
 // styles
 import "./styles/dropZone.css";
 
 export default function CountryEditModal(props) {
   const location = useLocation();
-  const {t}= useTranslation()
-  const path=location.pathname.slice(4)
+  const { t } = useTranslation();
+  const path = location.pathname.slice(4);
   const uid = props.uid;
   const titleModal = props.title;
 
@@ -195,7 +208,7 @@ export default function CountryEditModal(props) {
           }
         }
       } catch (e) {
-        return <div>{t('FetchingError')}</div>;
+        return <div>{t("FetchingError")}</div>;
       }
     }
     getLoadData();
@@ -235,17 +248,21 @@ export default function CountryEditModal(props) {
       }
     } catch (e) {}
   }
-  
-  var selectValue = localStorage.getItem('lng');
-  if(null === selectValue)
-{
-  selectValue = 'fa';
-}
-let dir
-selectValue==='en'?dir="ltr":dir="rtl"
+
+  var selectValue = localStorage.getItem("lng");
+  if (null === selectValue) {
+    selectValue = "fa";
+  }
+  let dir;
+  selectValue === "en" ? (dir = "ltr") : (dir = "rtl");
 
   return (
-    <div dir={dir} className="modal fade" id="kt_modal_edit_role" aria-hidden="true">
+    <div
+      dir={dir}
+      className="modal fade"
+      id="kt_modal_edit_role"
+      aria-hidden="true"
+    >
       <div className="modal-dialog modal-fullscreen p-9">
         <div className="modal-content">
           <div className="modal-header">
@@ -276,7 +293,9 @@ selectValue==='en'?dir="ltr":dir="rtl"
                     <div className="row mb-3">
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
-                          <label className="fs-5 fw-bold mb-2">{t('title')}</label>
+                          <label className="fs-5 fw-bold mb-2">
+                            {t("title")}
+                          </label>
                           {title != null && (
                             <TextBoxComponent
                               config={TitleTextBoxConfig}
@@ -291,32 +310,24 @@ selectValue==='en'?dir="ltr":dir="rtl"
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
                           <label className="fs-5 fw-bold mb-2">
-                          {t('foodCulture')}
+                            {t("foodCulture")}
                           </label>
                           {foodCulture != null && (
-                            <CKEditor
-                              config={{
-                                language: {
-                                  ui: "en",
-
-                                  content: "ar",
-                                },
-                              }}
-                              data={foodCulture}
-                              editor={ClassicEditor}
-                              onChange={(event, editor) => {
-                                setFoodCulture(editor.getData());
-                              }}
-                              onReady={(editor) => {
-                                editor.editing.view.change((writer) => {
-                                  writer.setStyle(
-                                    "max-height",
-                                    "200px",
-                                    editor.editing.view.document.getRoot()
-                                  );
-                                });
-                              }}
-                            />
+                            <div className="editor">
+                            
+                              <QuillToolbar1 />
+                              <ReactQuill
+                                theme="snow"
+                                value={foodCulture}
+                                onChange={(editor) => {
+                                  setFoodCulture(editor);
+                                }}
+                                formats={formats}
+                                modules={modules1}
+                               
+                              />
+                             
+                            </div>
                           )}
                         </div>
                       </div>
@@ -324,63 +335,47 @@ selectValue==='en'?dir="ltr":dir="rtl"
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
                           <label className="fs-6 fw-bold mb-2">
-                          {t('PopularCondiments')}
+                            {t("PopularCondiments")}
                           </label>
                           {popularCondiments != null && (
-                            <CKEditor
-                              config={{
-                                language: {
-                                  ui: "en",
-
-                                  content: "ar",
-                                },
-                              }}
-                              data={popularCondiments}
-                              editor={ClassicEditor}
-                              onChange={(event, editor) => {
-                                setPopularCondiments(editor.getData());
-                              }}
-                              onReady={(editor) => {
-                                editor.editing.view.change((writer) => {
-                                  writer.setStyle(
-                                    "max-height",
-                                    "200px",
-                                    editor.editing.view.document.getRoot()
-                                  );
-                                });
-                              }}
-                            />
+                            <div className="editor">
+                              <QuillToolbar2 />
+                              <ReactQuill
+                                theme="snow"
+                                value={popularCondiments}
+                                onChange={(editor) => {
+                                  setPopularCondiments(editor);
+                                }}
+                                formats={formats}
+                                modules={modules2}
+                              
+                              />
+                           
+                            
+                             </div>
                           )}
                         </div>
                       </div>
                       <div className="separator separator-dashed my-6"></div>
                       <div className="row">
                         <div className="d-flex flex-column mb-10 fv-row">
-                          <label className="fs-6 fw-bold mb-2">{t('tradition')}</label>
+                          <label className="fs-6 fw-bold mb-2">
+                            {t("tradition")}
+                          </label>
                           {tradition != null && (
-                            <CKEditor
-                              config={{
-                                language: {
-                                  ui: "en",
-
-                                  content: "ar",
-                                },
-                              }}
-                              data={tradition}
-                              editor={ClassicEditor}
-                              onChange={(event, editor) => {
-                                setTradition(editor.getData());
-                              }}
-                              onReady={(editor) => {
-                                editor.editing.view.change((writer) => {
-                                  writer.setStyle(
-                                    "max-height",
-                                    "200px",
-                                    editor.editing.view.document.getRoot()
-                                  );
-                                });
-                              }}
-                            />
+                            <div className="editor">
+                              <QuillToolbar3 />
+                              <ReactQuill
+                                theme="snow"
+                                value={tradition}
+                                onChange={(editor) => {
+                                  setTradition(editor);
+                                }}
+                                formats={formats}
+                                modules={modules3}
+                              />
+                               
+                          </div>
                           )}
                         </div>
                       </div>
@@ -388,7 +383,9 @@ selectValue==='en'?dir="ltr":dir="rtl"
                       <div className="col-md-18">
                         <div className="row mb-5">
                           <div className="col-md-6 fv-row">
-                            <label className="fs-6 fw-bold mb-2">{t('picture')}</label>
+                            <label className="fs-6 fw-bold mb-2">
+                              {t("picture")}
+                            </label>
                             <div
                               id="image-dropzone-external"
                               className={`drop-zone flex-box ${
@@ -486,8 +483,7 @@ selectValue==='en'?dir="ltr":dir="rtl"
                   </div>
                   <div className="card-footer d-flex justify-content-end py-6 px-9">
                     <button className="btn btn-primary" type="submit">
-                    {t('save')}
-
+                      {t("save")}
                     </button>
                     <LoadPanel
                       shading={true}
@@ -497,7 +493,7 @@ selectValue==='en'?dir="ltr":dir="rtl"
                       visible={loadPanelVisible}
                       closeOnOutsideClick={false}
                       shadingColor="rgba(0,0,0,0.4)"
-                      message={t('preparing')}
+                      message={t("preparing")}
                     />
                   </div>
                 </form>

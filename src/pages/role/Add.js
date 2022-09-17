@@ -4,13 +4,20 @@ import { LoadPanel } from 'devextreme-react/load-panel';
 import { useTranslation } from 'react-i18next';
 
 import { PostApi } from '../../managers/HttpManager';
-
+import ReactQuill from "react-quill";
+import  "react-quill/dist/react-quill";
 // components
 import TextBoxComponent from '../../components/textBox/TextBox';
 import TextAreaComponent from '../../components/textArea/TextArea';
 import { default as CheckBox } from '../../components/checkBox/CheckBox';
 import { default as SelectBox } from '../../components/selectBox/SelectBox';
-
+import  {
+    modules1,
+  
+    formats,
+    QuillToolbar1,
+  
+  } from "../../components/editorToolbar/EditorToolbar.js";
 //utiles
 import { useToast } from '../../utils/toast/useToast';
 import getStatusMessage from '../../utils/statusHandler';
@@ -23,7 +30,6 @@ import { SelectBoxConfig as EntityConfig } from './entitySelectBoxConfig';
 import { TextBoxConfig as TitleTextBoxConfig } from './titleTextBoxConfig';
 import { CheckBoxConfig as canDeleteConfig } from './canDeleteCheckBoxConfig';
 import { CheckBoxConfig as canPublishConfig } from './canPublishCheckBoxConfig';
-import { TextAreaConfig as descriptionTextAreaConfig } from './decriptionTextAreaConfig';
 
 export default function AddRule() {
 
@@ -115,10 +121,22 @@ selectValue==='en'?dir="ltr":dir="rtl"
                                     </div>
                                     <div className="d-flex flex-column mb-10 fv-row">
                                         <label className="fs-6 fw-bold mb-2">{t('Description')}</label>
-                                        <TextAreaComponent
+                                        {/* <TextAreaComponent
                                             config={descriptionTextAreaConfig}
                                             onValueChanged={(data) => setDescription(data.value)}
-                                        ></TextAreaComponent>
+                                        ></TextAreaComponent> */}
+                                        <div>
+                                          <QuillToolbar1 />
+                              <ReactQuill
+                                theme="snow"
+                             
+                                onChange={(editor) => {
+                                    setDescription(editor.replace(/(<([^>]+)>)/ig, ''));
+                                }}
+                                formats={formats}
+                                modules={modules1}
+                               
+                              /></div>
                                     </div>
                                 </div>
                                 <div className="row">

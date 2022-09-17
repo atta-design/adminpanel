@@ -4,13 +4,22 @@ import React, { useEffect, useState } from 'react';
 import { LoadPanel } from 'devextreme-react/load-panel';
 import { GetDataApi, PostApi } from '../../managers/HttpManager';
 import { useTranslation } from 'react-i18next';
-
+import ReactQuill from "react-quill";
+import  "react-quill/dist/react-quill";
+import  {
+    modules1,
+  
+    formats,
+    QuillToolbar1,
+  
+  } from "../editorToolbar/EditorToolbar";
+  
 // components
 import Chips from '../chips/Chips';
 import TextBoxComponent from '../textBox/TextBox';
-import TextAreaComponent from '../textArea/TextArea';
 import { default as CheckBox } from '../checkBox/CheckBox';
 import { default as SelectBox } from '../selectBox/SelectBox';
+import "../../App.css";
 
 //utiles
 import { useToast } from '../../utils/toast/useToast';
@@ -25,7 +34,6 @@ import { SelectBoxConfig as EntityConfig } from '../../pages/role/editConfigs/en
 import { TextBoxConfig as TitleTextBoxConfig } from '../../pages/role/editConfigs/titleTextBoxConfig';
 import { CheckBoxConfig as canDeleteConfig } from '../../pages/role/editConfigs/canDeleteCheckBoxConfig';
 import { CheckBoxConfig as canPublishConfig } from '../../pages/role/editConfigs/canPublishCheckBoxConfig';
-import { TextAreaConfig as descriptionTextAreaConfig } from '../../pages/role/editConfigs/decriptionTextAreaConfig';
 
 
 export default function RoleEditModal(props) {
@@ -47,7 +55,7 @@ export default function RoleEditModal(props) {
     const [description, setDescription] = useState(null);
     const [loadPanelVisible, setLoadPanelVisible] = useState(true);
 
-    
+    console.log(description)
     const nullVariables = () => {
         setAdd(null);
         setEdit(null);
@@ -194,11 +202,21 @@ selectValue==='en'?dir="ltr":dir="rtl"
                                                 <label className="fs-6 fw-bold mb-2">{t('Description')}</label>
                                                 {
                                                     description != null &&
-                                                    <TextAreaComponent
-                                                        defaultValue={description}
-                                                        config={descriptionTextAreaConfig}
-                                                        onValueChanged={(data) => setDescription(data.value)}
-                                                    ></TextAreaComponent>
+                                                   
+                                                    <div className="editor">
+                                                    <QuillToolbar1 />
+                                                    <ReactQuill
+                                                      theme="snow"
+                                                      value={description}
+                                                      
+                                                      onChange={(editor) => {
+                                                        setDescription(editor.replace(/(<([^>]+)>)/ig, ''));
+                                                      
+                                                      }}
+                                                      formats={formats}
+                                                      modules={modules1}
+                                                     
+                                                    /></div>
                                                 }
                                             </div>
                                         </div>
